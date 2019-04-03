@@ -1611,7 +1611,7 @@
             "symbolic_name": "krb5"
         },
         {
-            "file": "/etc/krb5.conf.d/()*.*\\.conf",
+            "file": "/etc/krb5.conf.d/*",
             "pattern": [],
             "symbolic_name": "krb5_conf_d"
         },
