@@ -1606,14 +1606,14 @@
             "symbolic_name": "kexec_crash_size"
         },
         {
-            "file": "/etc/()*krb5\\.conf",
+            "file": "/etc/krb5.conf",
             "pattern": [],
             "symbolic_name": "krb5"
         },
         {
             "file": "/etc/krb5.conf.d/*",
             "pattern": [],
-            "symbolic_name": "krb5_conf_d"
+            "symbolic_name": "krb5"
         },
         {
             "file": "/sys/kernel/mm/ksm/run",
