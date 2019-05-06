@@ -1611,9 +1611,9 @@
             "symbolic_name": "krb5"
         },
         {
-            "file": "/etc/krb5.conf.d/*",
+            "file": "/etc/krb5.conf.d/()*.*\\.conf",
             "pattern": [],
-            "symbolic_name": "krb5"
+            "symbolic_name": "krb5_conf_d"
         },
         {
             "file": "/sys/kernel/mm/ksm/run",
