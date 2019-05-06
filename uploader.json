@@ -1,6 +1,11 @@
 {
     "commands": [
         {
+            "command": "python -m insights.tools.cat --no-header aws_instance_type",
+            "pattern": [],
+            "symbolic_name": "aws_instance_type"
+        },
+        {
             "command": "/sbin/auditctl -s",
             "pattern": [],
             "symbolic_name": "auditctl_status"
@@ -139,6 +144,7 @@
                 "blocked FC remote port time out",
                 "crashkernel reservation failed",
                 "crashkernel=auto resulted in zero bytes of reserved memory",
+                "e1000: E1000 MODULE IS NOT SUPPORTED",
                 "fw=8.08.",
                 "is now offline",
                 "ixgbevf: Unknown parameter `InterruptThrottleRate'",
@@ -227,6 +233,11 @@
             "command": "/usr/bin/getcert list",
             "pattern": [],
             "symbolic_name": "getcert_list"
+        },
+        {
+            "command": "/usr/bin/getconf PAGE_SIZE",
+            "pattern": [],
+            "symbolic_name": "getconf_pagesize"
         },
         {
             "command": "/usr/sbin/getenforce",
@@ -450,6 +461,11 @@
             "symbolic_name": "ls_var_lib_nova_instances"
         },
         {
+            "command": "/bin/ls -ld /var/opt/mssql",
+            "pattern": [],
+            "symbolic_name": "ls_var_opt_mssql"
+        },
+        {
             "command": "/bin/ls -ln /usr/sbin",
             "pattern": [
                 "total"
@@ -460,6 +476,11 @@
             "command": "/bin/ls -la /var/log /var/log/audit",
             "pattern": [],
             "symbolic_name": "ls_var_log"
+        },
+        {
+            "command": "/bin/ls -la /var/opt/mssql/log",
+            "pattern": [],
+            "symbolic_name": "ls_var_opt_mssql_log"
         },
         {
             "command": "/bin/ls -la /dev/null /var/www",
@@ -636,9 +657,67 @@
         {
             "command": "/usr/sbin/named-checkconf -p",
             "pattern": [
+                "DISABLE-ALGORITHMS",
+                "DISABLE-DS-DIGESTS",
                 "DNSSEC-ENABLE",
+                "DSA",
+                "Disable-Algorithms",
+                "Disable-Ds-Digests",
                 "Dnssec-Enable",
-                "dnssec-enable"
+                "Dsa",
+                "ECCGOST",
+                "ECDSAP256SHA256",
+                "ECDSAP384SHA384",
+                "Eccgost",
+                "Ecdsap256Sha256",
+                "Ecdsap384Sha384",
+                "GOST",
+                "Gost",
+                "NSEC3DSA",
+                "NSEC3RSASHA1",
+                "Nsec3Dsa",
+                "Nsec3Rsasha1",
+                "RSAMD5",
+                "RSASHA1",
+                "RSASHA256",
+                "RSASHA512",
+                "Rsamd5",
+                "Rsasha1",
+                "Rsasha256",
+                "Rsasha512",
+                "SHA-1",
+                "SHA-256",
+                "SHA-384",
+                "SHA1",
+                "SHA256",
+                "SHA384",
+                "Sha-1",
+                "Sha-256",
+                "Sha-384",
+                "Sha1",
+                "Sha256",
+                "Sha384",
+                "disable-algorithms",
+                "disable-ds-digests",
+                "dnssec-enable",
+                "dsa",
+                "eccgost",
+                "ecdsap256sha256",
+                "ecdsap384sha384",
+                "gost",
+                "nsec3dsa",
+                "nsec3rsasha1",
+                "rsamd5",
+                "rsasha1",
+                "rsasha256",
+                "rsasha512",
+                "sha-1",
+                "sha-256",
+                "sha-384",
+                "sha1",
+                "sha256",
+                "sha384",
+                "}"
             ],
             "symbolic_name": "named_checkconf_p"
         },
@@ -783,6 +862,8 @@
             "pattern": [
                 "/sbin/multipathd",
                 "/usr/bin/celery worker",
+                "/usr/bin/nova-compute",
+                "/usr/bin/nova-conductor",
                 "/usr/bin/teamd",
                 "/usr/sbin/fcoemon --syslog",
                 "COMMAND",
@@ -793,11 +874,12 @@
                 "greenplum",
                 "httpd",
                 "iscsid",
-                "java",
-                "jboss",
+                "multipath",
                 "nfs-server",
                 "nfsd",
                 "nginx",
+                "nova-compute",
+                "nova-conductor",
                 "ntpd",
                 "postgres",
                 "smbd",
@@ -854,11 +936,6 @@
             "symbolic_name": "rhev_data_center"
         },
         {
-            "command": "python -m insights.tools.cat --no-header sapcontrol_getsystemupdatelist",
-            "pattern": [],
-            "symbolic_name": "sapcontrol_getsystemupdatelist"
-        },
-        {
             "command": "/usr/bin/crontab -l -u root",
             "pattern": [
                 "heat-manage"
@@ -896,9 +973,19 @@
             "symbolic_name": "subscription_manager_release_show"
         },
         {
+            "command": "/usr/bin/subscription-manager list --consumed",
+            "pattern": [],
+            "symbolic_name": "subscription_manager_list_consumed"
+        },
+        {
             "command": "/usr/bin/subscription-manager repos --list-enabled",
             "pattern": [],
             "symbolic_name": "subscription_manager_repos_list_enabled"
+        },
+        {
+            "command": "/usr/bin/subscription-manager facts --list",
+            "pattern": [],
+            "symbolic_name": "subscription_manager_facts_list"
         },
         {
             "command": "/usr/sbin/ss -tupna",
@@ -1203,6 +1290,11 @@
             "symbolic_name": "ceph_osd_log"
         },
         {
+            "file": "/proc/cgroups",
+            "pattern": [],
+            "symbolic_name": "cgroups"
+        },
+        {
             "file": "/etc/chrony.conf",
             "pattern": [],
             "symbolic_name": "chrony_conf"
@@ -1221,6 +1313,16 @@
             "file": "/var/lib/config-data/puppet-generated/cinder/etc/cinder/cinder.conf",
             "pattern": [],
             "symbolic_name": "cinder_conf"
+        },
+        {
+            "file": "/var/log/cinder/cinder-api.log",
+            "pattern": [],
+            "symbolic_name": "cinder_api_log"
+        },
+        {
+            "file": "/var/log/containers/cinder/cinder-api.log",
+            "pattern": [],
+            "symbolic_name": "cinder_api_log"
         },
         {
             "file": "/var/log/cinder/volume.log",
@@ -1323,6 +1425,11 @@
             "file": "/etc/crypto-policies/back-ends/opensshserver.config",
             "pattern": [],
             "symbolic_name": "crypto_policies_opensshserver"
+        },
+        {
+            "file": "/etc/crypto-policies/back-ends/bind.config",
+            "pattern": [],
+            "symbolic_name": "crypto_policies_bind"
         },
         {
             "file": "/sys/kernel/debug/x86/retp_enabled",
@@ -1482,7 +1589,12 @@
         {
             "file": "/etc/httpd/conf.d/()*.+\\.conf",
             "pattern": [],
-            "symbolic_name": "httpd_conf_d"
+            "symbolic_name": "httpd_conf"
+        },
+        {
+            "file": "/etc/httpd/conf.modules.d/()*.+\\.conf",
+            "pattern": [],
+            "symbolic_name": "httpd_conf"
         },
         {
             "file": "/opt/rh/httpd24/root/etc/httpd/conf/httpd.conf",
@@ -1491,6 +1603,11 @@
         },
         {
             "file": "/opt/rh/httpd24/root/etc/httpd/conf.d/()*.+\\.conf",
+            "pattern": [],
+            "symbolic_name": "httpd_conf_scl_httpd24"
+        },
+        {
+            "file": "/opt/rh/httpd24/root/etc/httpd/conf.modules.d/()*.+\\.conf",
             "pattern": [],
             "symbolic_name": "httpd_conf_scl_httpd24"
         },
@@ -1505,6 +1622,11 @@
             "symbolic_name": "httpd_conf_scl_jbcs_httpd24"
         },
         {
+            "file": "/opt/rh/jbcs-httpd24/root/etc/httpd/conf.modules.d/()*.+\\.conf",
+            "pattern": [],
+            "symbolic_name": "httpd_conf_scl_jbcs_httpd24"
+        },
+        {
             "file": "/var/log/httpd/error_log",
             "pattern": [
                 "(28)No space left on device: ",
@@ -1512,6 +1634,7 @@
                 "ModSecurity: collections_remove_stale: Failed deleting collection",
                 "Require ServerLimit > 0, setting to 1",
                 "Resource temporarily unavailable",
+                "The mpm module (prefork.c) is not supported by mod_http2",
                 "[crit] Memory allocation failed, aborting process",
                 "and would exceed the ServerLimit value of ",
                 "consider raising the MaxClients setting",
@@ -1527,6 +1650,16 @@
                 "not allowed, increasing to 1"
             ],
             "symbolic_name": "httpd_error_log"
+        },
+        {
+            "file": "/opt/rh/httpd24/root/etc/httpd/logs/error_log",
+            "pattern": [],
+            "symbolic_name": "httpd24_httpd_error_log"
+        },
+        {
+            "file": "/opt/rh/jbcs-httpd24/root/etc/httpd/logs/error_log",
+            "pattern": [],
+            "symbolic_name": "jbcs_httpd24_httpd_error_log"
         },
         {
             "file": "/etc/sysconfig/network-scripts/()*ifcfg-.*",
@@ -1588,6 +1721,20 @@
             "symbolic_name": "iptables_permanent"
         },
         {
+            "file": "/etc/ironic/ironic.conf",
+            "pattern": [
+                "["
+            ],
+            "symbolic_name": "ironic_conf"
+        },
+        {
+            "file": "/var/lib/config-data/puppet-generated/ironic/etc/ironic/ironic.conf",
+            "pattern": [
+                "["
+            ],
+            "symbolic_name": "ironic_conf"
+        },
+        {
             "file": "/var/log/ironic-inspector/ironic-inspector.log",
             "pattern": [
                 "Certificate did not match expected hostname",
@@ -1609,11 +1756,6 @@
             "file": "/etc/krb5.conf",
             "pattern": [],
             "symbolic_name": "krb5"
-        },
-        {
-            "file": "/etc/krb5.conf.d/()*.*\\.conf",
-            "pattern": [],
-            "symbolic_name": "krb5_conf_d"
         },
         {
             "file": "/sys/kernel/mm/ksm/run",
@@ -1665,6 +1807,7 @@
             "pattern": [
                 " disconnect jid=",
                 ", type vxfs) has no security xattr handler",
+                "- image is referenced in one or more repositories",
                 "/input/input",
                 "11000 E11000 duplicate key error index: pulp_database.repo_profile_applicability.$profile_hash_-1_repo_id_-1",
                 ": Machine check events logged",
@@ -1679,7 +1822,7 @@
                 "Error in FW/Card",
                 "Error running DeviceResume dm_task_run failed",
                 "Failed to bind socket: No such file or directory",
-                "Failed to get system container stats for",
+                "Failed to extend thin",
                 "Link down",
                 "List /apis/image.openshift.io/v1/images",
                 "MDC/MDIO access timeout",
@@ -1687,7 +1830,9 @@
                 "Medium access timeout failure. Offlining disk!",
                 "MountVolume.SetUp succeeded for volume",
                 "Neighbour table overflow",
+                "Orphaned pod",
                 "Out of MCCQ wrbs",
+                "Out of memory: Kill process",
                 "Out of memory: kill process",
                 "SCSI device reset on",
                 "SDN initialization failed: Error: Existing service with IP: None is not part of service network",
@@ -1785,6 +1930,11 @@
             "symbolic_name": "mongod_conf"
         },
         {
+            "file": "/var/opt/mssql/mssql.conf",
+            "pattern": [],
+            "symbolic_name": "mssql_conf"
+        },
+        {
             "file": "/etc/multipath.conf",
             "pattern": [],
             "symbolic_name": "multipath_conf"
@@ -1821,32 +1971,47 @@
             "symbolic_name": "nfs_exports_d"
         },
         {
-            "file": "/etc/nginx/()*nginx.conf",
+            "file": "/etc/nginx/()*.conf",
             "pattern": [],
             "symbolic_name": "nginx_conf"
         },
         {
-            "file": "/etc/opt/rh/rh-nginx112/nginx/()*nginx.conf",
+            "file": "/etc/nginx/conf.d/*",
             "pattern": [],
             "symbolic_name": "nginx_conf"
         },
         {
-            "file": "/opt/rh/nginx14/root/etc/nginx/()*nginx.conf",
+            "file": "/etc/nginx/default.d/*",
             "pattern": [],
             "symbolic_name": "nginx_conf"
         },
         {
-            "file": "/opt/rh/nginx16/root/etc/nginx/()*nginx.conf",
+            "file": "/etc/opt/rh/rh-nginx()*/nginx/()*.conf",
             "pattern": [],
             "symbolic_name": "nginx_conf"
         },
         {
-            "file": "/etc/opt/rh/rh-nginx110/nginx/()*nginx.conf",
+            "file": "/etc/opt/rh/rh-nginx()*/nginx/conf.d/*",
             "pattern": [],
             "symbolic_name": "nginx_conf"
         },
         {
-            "file": "/etc/opt/rh/rh-nginx18/nginx/()*nginx.conf",
+            "file": "/etc/opt/rh/rh-nginx()*/nginx/default.d/*",
+            "pattern": [],
+            "symbolic_name": "nginx_conf"
+        },
+        {
+            "file": "/opt/rh/nginx()*/root/etc/nginx/()*.conf",
+            "pattern": [],
+            "symbolic_name": "nginx_conf"
+        },
+        {
+            "file": "/opt/rh/nginx()*/root/etc/nginx/conf.d/*",
+            "pattern": [],
+            "symbolic_name": "nginx_conf"
+        },
+        {
+            "file": "/opt/rh/nginx()*/root/etc/nginx/default.d/*",
             "pattern": [],
             "symbolic_name": "nginx_conf"
         },
@@ -1872,15 +2037,21 @@
                 "Attempting claim on node",
                 "Claim successful on node",
                 "Could not open ",
+                "Detach volume",
+                "Disk of instance is too large",
                 "During sync_power_state the instance has a pending task",
                 "ERROR nova.virt.libvirt.driver",
                 "ERROR oslo_messaging.rpc.server Command: scp -r",
                 "ERROR oslo_messaging.rpc.server InvalidSharedStorage",
                 "ERROR oslo_messaging.rpc.server Stderr: u'Device crypt-dm-uuid-mpath",
+                "Find Multipath device file for volume WWN",
                 "FlavorDiskSmallerThanImage: Flavor's disk is too small for requested image.",
+                "INFO nova.compute.manager",
+                "INFO os_brick.initiator.linuxscsi",
                 "Instance shutdown by itself. Calling the stop API.",
                 "Live Migration failure: internal error: process exited while connecting to monitor",
                 "Live Migration failure: operation failed: Failed to connect to remote libvirt URI qemu+ssh",
+                "Migration pre-check error: Unable to migrate",
                 "No such device or address",
                 "Resuming guest",
                 "Stderr: u'blockdev: cannot open",
@@ -1888,6 +2059,7 @@
                 "cmt=off: Property '.cmt' not found",
                 "does not match source",
                 "error: Failed to start domain",
+                "from mountpoint /dev",
                 "is not active",
                 "is not on shared storage",
                 "libvirt-guests.sh",
@@ -1906,15 +2078,21 @@
                 "Attempting claim on node",
                 "Claim successful on node",
                 "Could not open ",
+                "Detach volume",
+                "Disk of instance is too large",
                 "During sync_power_state the instance has a pending task",
                 "ERROR nova.virt.libvirt.driver",
                 "ERROR oslo_messaging.rpc.server Command: scp -r",
                 "ERROR oslo_messaging.rpc.server InvalidSharedStorage",
                 "ERROR oslo_messaging.rpc.server Stderr: u'Device crypt-dm-uuid-mpath",
+                "Find Multipath device file for volume WWN",
                 "FlavorDiskSmallerThanImage: Flavor's disk is too small for requested image.",
+                "INFO nova.compute.manager",
+                "INFO os_brick.initiator.linuxscsi",
                 "Instance shutdown by itself. Calling the stop API.",
                 "Live Migration failure: internal error: process exited while connecting to monitor",
                 "Live Migration failure: operation failed: Failed to connect to remote libvirt URI qemu+ssh",
+                "Migration pre-check error: Unable to migrate",
                 "No such device or address",
                 "Resuming guest",
                 "Stderr: u'blockdev: cannot open",
@@ -1922,6 +2100,7 @@
                 "cmt=off: Property '.cmt' not found",
                 "does not match source",
                 "error: Failed to start domain",
+                "from mountpoint /dev",
                 "is not active",
                 "is not on shared storage",
                 "libvirt-guests.sh",
@@ -1939,6 +2118,11 @@
         },
         {
             "file": "/var/lib/config-data/puppet-generated/nova/etc/nova/nova.conf",
+            "pattern": [],
+            "symbolic_name": "nova_conf"
+        },
+        {
+            "file": "/var/lib/config-data/puppet-generated/nova_libvirt/etc/nova/nova.conf",
             "pattern": [],
             "symbolic_name": "nova_conf"
         },
@@ -1962,6 +2146,11 @@
             "file": "/etc/ntp.conf",
             "pattern": [],
             "symbolic_name": "ntp_conf"
+        },
+        {
+            "file": "/sys/module/nvme_core/parameters/io_timeout",
+            "pattern": [],
+            "symbolic_name": "nvme_core_io_timeout"
         },
         {
             "file": "/etc/odbc.ini",
@@ -1996,6 +2185,13 @@
         },
         {
             "file": "/var/log/pacemaker.log",
+            "pattern": [
+                "pcmk_dbus_find_error"
+            ],
+            "symbolic_name": "pacemaker_log"
+        },
+        {
+            "file": "/var/log/pacemaker/pacemaker.log",
             "pattern": [
                 "pcmk_dbus_find_error"
             ],
@@ -2092,6 +2288,11 @@
             "file": "/etc/redhat-release",
             "pattern": [],
             "symbolic_name": "redhat_release"
+        },
+        {
+            "file": "/etc/os-release",
+            "pattern": [],
+            "symbolic_name": "os_release"
         },
         {
             "file": "/etc/resolv.conf",
@@ -2658,6 +2859,7 @@
             "file": "/var/lib/config-data/puppet-generated/gnocchi/etc/gnocchi/gnocchi.conf",
             "pattern": [
                 "[",
+                "ceph",
                 "ceph_pool",
                 "driver",
                 "storage"
@@ -2668,6 +2870,7 @@
             "file": "/etc/gnocchi/gnocchi.conf",
             "pattern": [
                 "[",
+                "ceph",
                 "ceph_pool",
                 "driver",
                 "storage"
@@ -2842,6 +3045,11 @@
         {
             "glob": "/var/opt/amq-broker/*/etc/broker.xml",
             "symbolic_name": "amq_broker",
+            "pattern": []
+        },
+        {
+            "glob": "/etc/krb5.conf.d/*",
+            "symbolic_name": "krb5_conf_d",
             "pattern": []
         },
         {
@@ -8370,5 +8578,5 @@
             ]
         }
     },
-    "version": "2019-03-28T15:10:48.855078"
+    "version": "2019-05-02T14:15:42.905221"
 }
