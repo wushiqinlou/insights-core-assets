@@ -1437,7 +1437,12 @@
             "symbolic_name": "x86_retp_enabled"
         },
         {
-            "file": "/var/log/dirsrv/.*/()*(errors|errors\\.2.*)",
+            "file": "/var/log/dirsrv/.*/access*",
+            "pattern": [],
+            "symbolic_name": "dirsrv_access"
+        },
+        {
+            "file": "/var/log/dirsrv/.*/errors*",
             "pattern": [
                 "We recommend to increase the entry cache size nsslapd-cachememsize"
             ],
