@@ -1437,18 +1437,6 @@
             "symbolic_name": "x86_retp_enabled"
         },
         {
-            "file": "/var/log/dirsrv/.*/access*",
-            "pattern": [],
-            "symbolic_name": "dirsrv_access"
-        },
-        {
-            "file": "/var/log/dirsrv/.*/errors*",
-            "pattern": [
-                "We recommend to increase the entry cache size nsslapd-cachememsize"
-            ],
-            "symbolic_name": "dirsrv_errors"
-        },
-        {
             "file": "/etc/dnf/modules.d/.*\\.module",
             "pattern": [],
             "symbolic_name": "dnf_modules"
@@ -3053,12 +3041,12 @@
             "pattern": []
         },
         {
-            "glob": "/var/log/dirsrv/.*/access*",
+            "glob": "/var/log/dirsrv/*/access*",
             "pattern": [],
             "symbolic_name": "dirsrv_access"
         },
         {
-            "glob": "/var/log/dirsrv/.*/errors*",
+            "glob": "/var/log/dirsrv/*/errors*",
             "pattern": [
                 "We recommend to increase the entry cache size nsslapd-cachememsize"
             ],
