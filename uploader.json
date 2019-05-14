@@ -3058,6 +3058,18 @@
             "pattern": []
         },
         {
+            "glob": "/var/log/dirsrv/.*/access*",
+            "pattern": [],
+            "symbolic_name": "dirsrv_access"
+        },
+        {
+            "glob": "/var/log/dirsrv/.*/errors*",
+            "pattern": [
+                "We recommend to increase the entry cache size nsslapd-cachememsize"
+            ],
+            "symbolic_name": "dirsrv_errors"
+        },
+        {
             "glob": "/sys/fs/cgroup/cpu/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod[a-f0-9_]*.slice/cpu.cfs_quota_us",
             "symbolic_name": "kubepods_cpu_quota",
             "pattern": []
