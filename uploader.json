@@ -51,11 +51,6 @@
             "symbolic_name": "ceph_osd_tree"
         },
         {
-            "command": "/usr/bin/ceph osd tree -f json-pretty",
-            "pattern": [],
-            "symbolic_name": "ceph_osd_tree"
-        },
-        {
             "command": "/usr/bin/ceph -s -f json-pretty",
             "pattern": [],
             "symbolic_name": "ceph_s"
@@ -884,19 +879,9 @@
             "symbolic_name": "parted__l"
         },
         {
-            "command": "/usr/bin/passenger-status",
-            "pattern": [],
-            "symbolic_name": "passenger_status"
-        },
-        {
             "command": "/usr/sbin/pcs config",
             "pattern": [],
             "symbolic_name": "pcs_config"
-        },
-        {
-            "command": "/usr/sbin/pcs status",
-            "pattern": [],
-            "symbolic_name": "pcs_status"
         },
         {
             "command": "/bin/grep -c '^[[:digit:]]' /etc/passwd /etc/group",
@@ -2726,7 +2711,7 @@
         {
             "file": "/etc/sysconfig/httpd",
             "pattern": [],
-            "symbolic_name": "/etc/sysconfig/httpd"
+            "symbolic_name": "sysconfig_httpd"
         },
         {
             "file": "/etc/sysconfig/irqbalance",
