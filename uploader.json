@@ -1036,7 +1036,7 @@
             "symbolic_name": "pvs_noheadings"
         },
         {
-            "command": "/sbin/pvs -a -v -o +pv_mda_free,pv_mda_size,pv_mda_count,pv_mda_used_count,pe_count --config="global{locking_type=0}"",
+            "command": "/sbin/pvs -a -v -o +pv_mda_free,pv_mda_size,pv_mda_count,pv_mda_used_count,pe_count --config=\"global{locking_type=0}\"",
             "pattern": [],
             "symbolic_name": "pvs"
         },
