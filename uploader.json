@@ -26,6 +26,11 @@
             "symbolic_name": "brctl_show"
         },
         {
+            "command": "/usr/bin/ceph df detail -f json-pretty",
+            "pattern": [],
+            "symbolic_name": "ceph_df_detail"
+        },
+        {
             "command": "/usr/bin/ceph health detail -f json-pretty",
             "pattern": [],
             "symbolic_name": "ceph_health_detail"
@@ -34,6 +39,16 @@
             "command": "/usr/bin/ceph osd dump -f json-pretty",
             "pattern": [],
             "symbolic_name": "ceph_osd_dump"
+        },
+        {
+            "command": "/usr/bin/ceph osd df -f json-pretty",
+            "pattern": [],
+            "symbolic_name": "ceph_osd_df"
+        },
+        {
+            "command": "/usr/bin/ceph osd tree -f json-pretty",
+            "pattern": [],
+            "symbolic_name": "ceph_osd_tree"
         },
         {
             "command": "/usr/bin/ceph osd tree -f json-pretty",
@@ -115,6 +130,11 @@
             "command": "/usr/bin/dig +noedns . SOA",
             "pattern": [],
             "symbolic_name": "dig_noedns"
+        },
+        {
+            "command": "/usr/bin/alternatives --display java",
+            "pattern": [],
+            "symbolic_name": "display_java"
         },
         {
             "command": "/bin/dmesg",
@@ -222,6 +242,11 @@
             "symbolic_name": "ethtool_k"
         },
         {
+            "command": "/usr/bin/engine-config --all",
+            "pattern": [],
+            "symbolic_name": "engine_config_all"
+        },
+        {
             "command": "/usr/bin/facter",
             "pattern": [],
             "symbolic_name": "facter"
@@ -230,6 +255,16 @@
             "command": "/usr/bin/qpid-stat -g --ssl-certificate=/etc/pki/katello/qpid_client_striped.crt -b amqps://localhost:5671",
             "pattern": [],
             "symbolic_name": "qpid_stat_g"
+        },
+        {
+            "command": "/usr/bin/qpid-stat -q --ssl-certificate=/etc/pki/katello/qpid_client_striped.crt -b amqps://localhost:5671",
+            "pattern": [],
+            "symbolic_name": "qpid_stat_q"
+        },
+        {
+            "command": "/usr/bin/qpid-stat -u --ssl-certificate=/etc/pki/katello/qpid_client_striped.crt -b amqps://localhost:5671",
+            "pattern": [],
+            "symbolic_name": "qpid_stat_u"
         },
         {
             "command": "/bin/fc-match -sv 'sans:regular:roman' family fontformat",
@@ -292,6 +327,16 @@
                 "heat-manage"
             ],
             "symbolic_name": "heat_crontab"
+        },
+        {
+            "command": "/usr/bin/pgrep -o httpd",
+            "pattern": [],
+            "symbolic_name": "httpd_pid"
+        },
+        {
+            "command": "/sbin/hponcfg -g",
+            "pattern": [],
+            "symbolic_name": "hponcfg_-g"
         },
         {
             "command": "/bin/hostname -f",
@@ -383,6 +428,11 @@
             "command": "/sbin/ip -6 neighbor show nud all",
             "pattern": [],
             "symbolic_name": "ipv6_neigh"
+        },
+        {
+            "command": "/usr/bin/katello-service status",
+            "pattern": [],
+            "symbolic_name": "katello_service_status"
         },
         {
             "command": "/usr/sbin/iscsiadm -m session",
@@ -533,6 +583,21 @@
             "symbolic_name": "ls_var_tmp"
         },
         {
+            "command": "/usr/sbin/foreman-rake db:migrate:status",
+            "pattern": [],
+            "symbolic_name": "foreman_rake_db_migrate_status"
+        },
+        {
+            "command": "/usr/bin/hammer ping",
+            "pattern": [],
+            "symbolic_name": "hammer_ping"
+        },
+        {
+            "command": "/usr/bin/hammer --csv task list",
+            "pattern": [],
+            "symbolic_name": "hammer_task_list"
+        },
+        {
             "command": "/bin/lsblk",
             "pattern": [],
             "symbolic_name": "lsblk"
@@ -612,6 +677,16 @@
             "symbolic_name": "lvs_noheadings"
         },
         {
+            "command": "/sbin/lvs --nameprefixes --noheadings --separator='|' -a -o lv_name,lv_size,lv_attr,mirror_log,vg_name,devices,region_size,data_percent,metadata_percent,segtype --config='global{locking_type=0} devices{filter=[\"a|.*|\"]}"",
+            "pattern": [],
+            "symbolic_name": "lvs_noheadings_all"
+        },
+        {
+            "command": "/usr/sbin/lvdisplay",
+            "pattern": [],
+            "symbolic_name": "lvdisplay"
+        },
+        {
             "command": "/bin/awk -F':' '{ if($3 > max) max = $3 } END { print max }' /etc/passwd",
             "pattern": [],
             "symbolic_name": "max_uid"
@@ -660,6 +735,11 @@
             "command": "/bin/mysqladmin variables",
             "pattern": [],
             "symbolic_name": "mysqladmin_vars"
+        },
+        {
+            "command": "/usr/bin/pgrep -n mysqld",
+            "pattern": [],
+            "symbolic_name": "mysqld_pid"
         },
         {
             "command": "/usr/sbin/named-checkconf -p",
@@ -734,6 +814,11 @@
             "symbolic_name": "namespace"
         },
         {
+            "command": "/bin/netstat -agn",
+            "pattern": [],
+            "symbolic_name": "netstat_agn"
+        },
+        {
             "command": "/bin/netstat -neopa",
             "pattern": [],
             "symbolic_name": "netstat"
@@ -792,6 +877,26 @@
             "command": "/usr/sbin/ntptime",
             "pattern": [],
             "symbolic_name": "ntptime"
+        },
+        {
+            "command": "/sbin/parted -l -s",
+            "pattern": [],
+            "symbolic_name": "parted__l"
+        },
+        {
+            "command": "/usr/bin/passenger-status",
+            "pattern": [],
+            "symbolic_name": "passenger_status"
+        },
+        {
+            "command": "/usr/sbin/pcs config",
+            "pattern": [],
+            "symbolic_name": "pcs_config"
+        },
+        {
+            "command": "/usr/sbin/pcs status",
+            "pattern": [],
+            "symbolic_name": "pcs_status"
         },
         {
             "command": "/bin/grep -c '^[[:digit:]]' /etc/passwd /etc/group",
@@ -931,6 +1036,16 @@
             "symbolic_name": "pvs_noheadings"
         },
         {
+            "command": "/sbin/pvs -a -v -o +pv_mda_free,pv_mda_size,pv_mda_count,pv_mda_used_count,pe_count --config="global{locking_type=0}""
+            "pattern": [],
+            "symbolic_name": "pvs"
+        },
+        {
+            "command": "/sbin/pvs --nameprefixes --noheadings --separator='|' -a -o pv_all,vg_name --config='global{locking_type=0} devices{filter=[\"a|.*|\"]}'"
+            "pattern": [],
+            "symbolic_name": "pvs_noheadings_all"
+        },
+        {
             "command": "/usr/sbin/rabbitmqctl list_queues name messages consumers auto_delete",
             "pattern": [],
             "symbolic_name": "rabbitmq_queues"
@@ -946,9 +1061,29 @@
             "symbolic_name": "rabbitmq_users"
         },
         {
+            "command": "/usr/bin/rhn-charsets",
+            "pattern": [],
+            "symbolic_name": "rhn_charsets"
+        },
+        {
+            "command": "/usr/bin/rhn-schema-stats -",
+            "pattern": [],
+            "symbolic_name": "rhn_schema_stats"
+        },
+        {
+            "command": "rhv-log-collector-analyzer --json",
+            "pattern": [],
+            "symbolic_name": "rhv_log_collector_analyzer"
+        },
+        {
             "command": "/usr/bin/rhn-schema-version",
             "pattern": [],
             "symbolic_name": "rhn_schema_version"
+        },
+        {
+            "command": "/sbin/route -n",
+            "pattern": [],
+            "symbolic_name": "route"
         },
         {
             "command": "python -m insights.tools.cat --no-header rhev_data_center",
@@ -976,6 +1111,11 @@
             "command": "/usr/bin/smbstatus -p",
             "pattern": [],
             "symbolic_name": "smbstatus_p"
+        },
+        {
+            "command": "/usr/bin/smbstatus -S",
+            "pattern": [],
+            "symbolic_name": "smbstatus_S"
         },
         {
             "command": "/usr/bin/scl --list",
@@ -1013,9 +1153,34 @@
             "symbolic_name": "sysctl"
         },
         {
+            "command": "/bin/lsinitrd /boot/initramfs-*kdump.img -f /etc/sysctl.conf /etc/sysctl.d/*.conf",
+            "pattern": [],
+            "symbolic_name": "sysctl_conf_initramfs"
+        },
+        {
             "command": "/bin/systemctl show openstack-cinder-volume",
             "pattern": [],
             "symbolic_name": "systemctl_cinder_volume"
+        },
+        {
+            "command": "/bin/systemctl cat rpcbind.socket",
+            "pattern": [],
+            "symbolic_name": "systemctl_cat_rpcbind_socket"
+        },
+        {
+            "command": "/bin/systemctl show pulp_workers",
+            "pattern": [],
+            "symbolic_name": "systemctl_pulp_workers"
+        },
+        {
+            "command": "/bin/systemctl show pulp_resource_manager",
+            "pattern": [],
+            "symbolic_name": "systemctl_pulp_resmg"
+        },
+        {
+            "command": "/bin/systemctl show pulp_celerybeat",
+            "pattern": [],
+            "symbolic_name": "systemctl_pulp_celerybeat"
         },
         {
             "command": "/bin/systemctl list-unit-files",
@@ -1099,6 +1264,11 @@
             "symbolic_name": "vgs_noheadings"
         },
         {
+            "command": "/sbin/vgs --nameprefixes --noheadings --separator='|' -a -o vg_all --config='global{locking_type=0} devices{filter=[\"a|.*|\"]}'"
+            "pattern": [],
+            "symbolic_name": "vgs_noheadings_all"
+        },
+        {
             "command": "/usr/bin/virsh --readonly list --all",
             "pattern": [],
             "symbolic_name": "virsh_list_all"
@@ -1127,6 +1297,16 @@
                 "openshift_use_crio"
             ],
             "symbolic_name": "openshift_hosts"
+        },
+        {
+            "file": "/var/log/openvswitch/ovsdb-server.log",
+            "pattern": [],
+            "symbolic_name": "openvswitch_server_log"
+        },
+        {
+            "file": "/var/log/openvswitch/ovs-vswitchd.log",
+            "pattern": [],
+            "symbolic_name": "openvswitch_daemon_log"
         },
         {
             "file": "/etc/redhat-access-insights/machine-id",
@@ -1169,6 +1349,11 @@
             "symbolic_name": "auditd_conf"
         },
         {
+            "file": "/etc/autofs.conf",
+            "pattern": [],
+            "symbolic_name": "autofs_conf"
+        },
+        {
             "file": "/sys/fs/selinux/avc/hash_stats",
             "pattern": [],
             "symbolic_name": "avc_hash_stats"
@@ -1190,6 +1375,11 @@
                 "NoCobblerTokenException: We had an error trying to login."
             ],
             "symbolic_name": "catalina_out"
+        },
+        {
+            "file": "/var/log/candlepin/error.log",
+            "pattern": [],
+            "symbolic_name": "candlepin_error_log"
         },
         {
             "file": "/var/log/tomcat6/()*catalina\\.out",
@@ -1221,9 +1411,19 @@
             "symbolic_name": "cciss"
         },
         {
+            "file": "/etc/splice/checkin.conf",
+            "pattern": [],
+            "symbolic_name": "checkin_conf"
+        },
+        {
             "file": "/etc/ceilometer/ceilometer.conf",
             "pattern": [],
             "symbolic_name": "ceilometer_conf"
+        },
+        {
+            "file": "/var/log/ceilometer/central.log",
+            "pattern": [],
+            "symbolic_name": "ceilometer_central_log"
         },
         {
             "file": "/var/lib/config-data/puppet-generated/ceilometer/etc/ceilometer/ceilometer.conf",
@@ -1461,6 +1661,11 @@
             "file": "/etc/redhat-access-insights/machine-id",
             "pattern": [],
             "symbolic_name": "machine_id1"
+        },
+        {
+            "file": "/etc/redhat-access-insights/machine-id",
+            "pattern": [],
+            "symbolic_name": "docker_host_machine_id"
         },
         {
             "file": "/etc/sysconfig/docker-storage-setup",
@@ -2233,6 +2438,11 @@
             "symbolic_name": "ose_node_config"
         },
         {
+            "file": "/etc/pam.conf",
+            "pattern": [],
+            "symbolic_name": "pam_conf"
+        },
+        {
             "file": "/var/log/pacemaker.log",
             "pattern": [
                 "pcmk_dbus_find_error"
@@ -2265,6 +2475,11 @@
             "file": "/var/lib/pgsql/data/postgresql.conf",
             "pattern": [],
             "symbolic_name": "postgresql_conf"
+        },
+        {
+            "file": "/etc/default/pulp_workers",
+            "pattern": [],
+            "symbolic_name": "pulp_worker_defaults"
         },
         {
             "file": "/etc/sysconfig/puppetserver",
@@ -2322,6 +2537,11 @@
             "symbolic_name": "rabbitmq_env"
         },
         {
+            "file": "/var/log/rabbitmq/startup_err",
+            "pattern": [],
+            "symbolic_name": "rabbitmq_startup_err"
+        },
+        {
             "file": "/var/log/rabbitmq/startup_log",
             "pattern": [
                 "Event crashed log handler:"
@@ -2342,6 +2562,11 @@
             "file": "/etc/redhat-release",
             "pattern": [],
             "symbolic_name": "redhat_release"
+        },
+        {
+            "file": "/var/log/rhn/rhn_server_satellite.log",
+            "pattern": [],
+            "symbolic_name": "rhn_server_satellite_log"
         },
         {
             "file": "/etc/os-release",
@@ -2489,6 +2714,26 @@
             "symbolic_name": "selinux_config"
         },
         {
+            "file": "/etc/sssd/sssd.conf",
+            "pattern": [],
+            "symbolic_name": "sssd_config"
+        },
+        {
+            "file": "/etc/sysconfig/chronyd",
+            "pattern": [],
+            "symbolic_name": "sysconfig_chronyd"
+        },
+        {
+            "file": "/etc/sysconfig/httpd",
+            "pattern": [],
+            "symbolic_name": "/etc/sysconfig/httpd"
+        },
+        {
+            "file": "/etc/sysconfig/irqbalance",
+            "pattern": [],
+            "symbolic_name": "sysconfig_irqbalance"
+        },
+        {
             "file": "/etc/sysconfig/foreman-tasks",
             "pattern": [
                 "EXECUTOR_MEMORY_LIMIT",
@@ -2496,6 +2741,46 @@
                 "EXECUTOR_MEMORY_MONITOR_INTERVAL"
             ],
             "symbolic_name": "foreman_tasks_config"
+        },
+        {
+            "file": "/var/log/foreman/production.log",
+            "pattern": [],
+            "symbolic_name": "foreman_production_log"
+        },
+        {
+            "file": "/var/log/foreman-proxy/proxy.log",
+            "pattern": [],
+            "symbolic_name": "foreman_proxy_log"
+        },
+        {
+            "file": "/var/log/foreman-installer/satellite.log",
+            "pattern": [],
+            "symbolic_name": "foreman_satellite_log"
+        },
+        {
+            "file": "/var/log/httpd/foreman-ssl_access_ssl.log",
+            "pattern": [],
+            "symbolic_name": "foreman_ssl_access_ssl_log"
+        }, 
+        {
+            "file": "/etc/glance/glance-registry.conf",
+            "pattern": [],
+            "symbolic_name": "glance_registry_conf"
+        },
+        {
+            "file": "/var/log/httpd/access_log",
+            "pattern": [],
+            "symbolic_name": "httpd_access_log"
+        },
+        {
+            "file": "/var/log/httpd/ssl_error_log",
+            "pattern": [],
+            "symbolic_name": "httpd_ssl_error_log"
+        },
+        {
+            "file": "/var/log/httpd/ssl_access_log",
+            "pattern": [],
+            "symbolic_name": "httpd_ssl_access_log"
         },
         {
             "file": "/proc/net/softnet_stat",
@@ -2896,6 +3181,11 @@
             "symbolic_name": "yum_conf"
         },
         {
+            "file": "/var/log/yum.log",
+            "pattern": [],
+            "symbolic_name": "yum_log"
+        },
+        {
             "file": "/etc/yum.repos.d/()*.*\\.repo",
             "pattern": [],
             "symbolic_name": "yum_repos_d"
@@ -2909,6 +3199,11 @@
             "file": "/var/log/redhat_access_proactive/redhat_access_proactive.log",
             "pattern": [],
             "symbolic_name": "redhat_access_proactive_log"
+        },
+        {
+            "file": "/var/log/libvirt/libvirtd.log",
+            "pattern": [],
+            "symbolic_name": "libvirtd_log"
         },
         {
             "file": "/etc/logrotate.conf",
@@ -3015,6 +3310,21 @@
                 ":database:"
             ],
             "symbolic_name": "smartpdc_settings"
+        },
+        {
+            "file": "/etc/sysconfig/ip6tables",
+            "pattern": [],
+            "symbolic_name": "ip6tables_permanent"
+        },
+        {
+            "file": "/var/log/krb5kdc.log",
+            "pattern": [],
+            "symbolic_name": "kerberos_kdc_log"
+        },
+        {
+            "file": "/sys/kernel/kexec_crash_loaded",
+            "pattern": [],
+            "symbolic_name": "kexec_crash_loaded"
         },
         {
             "file": "/etc/neutron/l3_agent.ini",
