@@ -677,7 +677,7 @@
             "symbolic_name": "lvs_noheadings"
         },
         {
-            "command": "/sbin/lvs --nameprefixes --noheadings --separator='|' -a -o lv_name,lv_size,lv_attr,mirror_log,vg_name,devices,region_size,data_percent,metadata_percent,segtype --config='global{locking_type=0} devices{filter=[\"a|.*|\"]}'"
+            "command": "/sbin/lvs --nameprefixes --noheadings --separator='|' -a -o lv_name,lv_size,lv_attr,mirror_log,vg_name,devices,region_size,data_percent,metadata_percent,segtype --config='global{locking_type=0} devices{filter=[\"a|.*|\"]}'",
             "pattern": [],
             "symbolic_name": "lvs_noheadings_all"
         },
@@ -1036,7 +1036,7 @@
             "symbolic_name": "pvs_noheadings"
         },
         {
-            "command": '/sbin/pvs -a -v -o +pv_mda_free,pv_mda_size,pv_mda_count,pv_mda_used_count,pe_count --config="global{locking_type=0}"',
+            "command": "/sbin/pvs -a -v -o +pv_mda_free,pv_mda_size,pv_mda_count,pv_mda_used_count,pe_count --config="global{locking_type=0}"",
             "pattern": [],
             "symbolic_name": "pvs"
         },
