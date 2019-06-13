@@ -1036,12 +1036,12 @@
             "symbolic_name": "pvs_noheadings"
         },
         {
-            "command": "/sbin/pvs -a -v -o +pv_mda_free,pv_mda_size,pv_mda_count,pv_mda_used_count,pe_count --config="global{locking_type=0}""
+            "command": '/sbin/pvs -a -v -o +pv_mda_free,pv_mda_size,pv_mda_count,pv_mda_used_count,pe_count --config="global{locking_type=0}"',
             "pattern": [],
             "symbolic_name": "pvs"
         },
         {
-            "command": "/sbin/pvs --nameprefixes --noheadings --separator='|' -a -o pv_all,vg_name --config='global{locking_type=0} devices{filter=[\"a|.*|\"]}'"
+            "command": "/sbin/pvs --nameprefixes --noheadings --separator='|' -a -o pv_all,vg_name --config='global{locking_type=0} devices{filter=[\"a|.*|\"]}'",
             "pattern": [],
             "symbolic_name": "pvs_noheadings_all"
         },
@@ -1264,7 +1264,7 @@
             "symbolic_name": "vgs_noheadings"
         },
         {
-            "command": "/sbin/vgs --nameprefixes --noheadings --separator='|' -a -o vg_all --config='global{locking_type=0} devices{filter=[\"a|.*|\"]}'"
+            "command": "/sbin/vgs --nameprefixes --noheadings --separator='|' -a -o vg_all --config='global{locking_type=0} devices{filter=[\"a|.*|\"]}'",
             "pattern": [],
             "symbolic_name": "vgs_noheadings_all"
         },
