@@ -2466,11 +2466,7 @@
         },
         {
             "file": "/etc/rsyslog.conf",
-            "pattern": [
-                "imjournal",
-                "imtcp",
-                "regex"
-            ],
+            "pattern": [],
             "symbolic_name": "rsyslog_conf"
         },
         {
@@ -3194,6 +3190,11 @@
             "glob": "/sys/devices/system/cpu/vulnerabilities/*",
             "symbolic_name": "cpu_vulns",
             "pattern": []
+        },
+        {
+            "glob": "/etc/rsyslog.d/*.conf",
+            "pattern": [],
+            "symbolic_name": "rsyslog_conf"
         },
         {
             "glob": "/sys/class/net/*/address",
