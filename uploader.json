@@ -1,6 +1,26 @@
 {
     "commands": [
         {
+            "command": "/usr/bin/abrt status --bare=True",
+            "pattern": [],
+            "symbolic_name": "abrt_status_bare"
+        },
+        {
+            "command": "python -m insights.tools.cat --no-header aws_instance_id_doc",
+            "pattern": [],
+            "symbolic_name": "aws_instance_id_doc"
+        },
+        {
+            "command": "python -m insights.tools.cat --no-header aws_instance_id_pkcs7",
+            "pattern": [],
+            "symbolic_name": "aws_instance_id_pkcs7"
+        },
+        {
+            "command": "python -m insights.tools.cat --no-header azure_instance_type",
+            "pattern": [],
+            "symbolic_name": "azure_instance_type"
+        },
+        {
             "command": "/sbin/auditctl -s",
             "pattern": [],
             "symbolic_name": "auditctl_status"
@@ -21,22 +41,32 @@
             "symbolic_name": "brctl_show"
         },
         {
-            "command": "/usr/bin/ceph health detail -f json-pretty",
+            "command": "/usr/bin/ceph health detail -f json",
             "pattern": [],
             "symbolic_name": "ceph_health_detail"
         },
         {
-            "command": "/usr/bin/ceph osd dump -f json-pretty",
+            "command": "/usr/bin/ceph df detail -f json",
+            "pattern": [],
+            "symbolic_name": "ceph_df_detail"
+        },
+        {
+            "command": "/usr/bin/ceph osd dump -f json",
             "pattern": [],
             "symbolic_name": "ceph_osd_dump"
         },
         {
-            "command": "/usr/bin/ceph osd tree -f json-pretty",
+            "command": "/usr/bin/ceph osd df -f json",
+            "pattern": [],
+            "symbolic_name": "ceph_osd_df"
+        },
+        {
+            "command": "/usr/bin/ceph osd tree -f json",
             "pattern": [],
             "symbolic_name": "ceph_osd_tree"
         },
         {
-            "command": "/usr/bin/ceph -s -f json-pretty",
+            "command": "/usr/bin/ceph -s -f json",
             "pattern": [],
             "symbolic_name": "ceph_s"
         },
@@ -66,6 +96,11 @@
             "symbolic_name": "chronyc_sources"
         },
         {
+            "command": "/usr/bin/cpupower -c all frequency-info",
+            "pattern": [],
+            "symbolic_name": "cpupower_frequency_info"
+        },
+        {
             "command": "/bin/date",
             "pattern": [],
             "symbolic_name": "date"
@@ -74,12 +109,6 @@
             "command": "/bin/date --utc",
             "pattern": [],
             "symbolic_name": "date_utc"
-        },
-        {
-            "command": "/sbin/dcbtool gc  dcb",
-            "pattern": [],
-            "pre_command": "iface",
-            "symbolic_name": "dcbtool_gc_dcb"
         },
         {
             "command": "/bin/df -al",
@@ -114,34 +143,61 @@
         {
             "command": "/bin/dmesg",
             "pattern": [
+                " is now offline",
+                "AMD Secure Memory Encryption (SME) active",
+                "Amazon EC2",
                 "Brought up ",
                 "CIFS VFS: protocol revalidation - security settings mismatch",
                 "CSUM",
                 "CVE-2017-1000364",
                 "CVE-2018-14634",
+                "Dazed and confused, but trying to continue",
                 "Device is ineligible for IOMMU domain attach due to platform RMRR requirement",
                 "Dropping TSO",
                 "EDAC ",
+                "EFI",
+                "Efi",
+                "Emulex OneConnect OCe10100, FCoE Initiator",
                 "FEATURE IBPB_SUPPORT",
                 "FEATURE SPEC_CTRL",
+                "Hyper-V Host Build:",
+                "Ignoring BGRT: failed to map image header memory",
+                "Ignoring BGRT: failed to map image memory",
                 "Kernel page table isolation",
+                "L1TF",
+                "L1Tf",
                 "Linux version",
+                "Machine Check Exception",
+                "Machine check events logged",
                 "NUMA: ",
                 "Node 0 CPUs: ",
                 "QLogic QLE2692 - QLogic 16Gb FC Dual-port HBA",
                 "SMBIOS ",
+                "SPLXMOD: SPLX 3.0: KHM loaded. Version [30118]",
+                "SPLXMOD: SPLX 3.0: KHM loaded. Version [30119]",
                 "TECH PREVIEW: NVMe over FC may not be fully supported.",
+                "Uhhuh. NMI received for unknown reason",
                 "VPD access disabled",
                 "WRITE SAME failed. Manually zeroing",
-                "blocked FC remote port time out",
+                "Warning: QLogic ISP3XXX Network Driver - this hardware has not undergone testing by Red Hat and might not be certified",
+                "__cpufreq_add_dev",
+                "blocked FC remote port time out: removing target and saving binding",
                 "crashkernel reservation failed",
                 "crashkernel=auto resulted in zero bytes of reserved memory",
+                "e1000: E1000 MODULE IS NOT SUPPORTED",
+                "efi",
                 "fw=8.08.",
-                "is now offline",
                 "ixgbevf: Unknown parameter `InterruptThrottleRate'",
+                "l1tf",
                 "mce: ",
                 "netconsole: network logging started",
+                "page allocation failure: order:",
+                "resetting",
+                "smpboot: CPU ",
+                "temperature above threshold",
                 "the DIE domain not a subset of the NUMA domain",
+                "tx hang",
+                "vmxnet3",
                 "vpd r/w failed",
                 "x86/pti"
             ],
@@ -173,6 +229,11 @@
             "symbolic_name": "docker_list_images"
         },
         {
+            "command": "/bin/du -s -k /var/lib/candlepin/activemq-artemis",
+            "pattern": [],
+            "symbolic_name": "du_dirs"
+        },
+        {
             "command": "/sbin/ethtool",
             "pattern": [],
             "pre_command": "iface",
@@ -183,6 +244,12 @@
             "pattern": [],
             "pre_command": "iface",
             "symbolic_name": "ethtool_S"
+        },
+        {
+            "command": "/sbin/ethtool -T",
+            "pattern": [],
+            "pre_command": "iface",
+            "symbolic_name": "ethtool_T"
         },
         {
             "command": "/sbin/ethtool -g",
@@ -218,9 +285,24 @@
             "symbolic_name": "fc_match"
         },
         {
-            "command": "/usr/bin/getcert list",
+            "command": "/usr/sbin/fcoeadm -i",
             "pattern": [],
-            "symbolic_name": "getcert_list"
+            "symbolic_name": "fcoeadm_i"
+        },
+        {
+            "command": "/bin/findmnt -lo+PROPAGATION",
+            "pattern": [],
+            "symbolic_name": "findmnt_lo_propagation"
+        },
+        {
+            "command": "/usr/bin/firewall-cmd --list-all-zones",
+            "pattern": [],
+            "symbolic_name": "firewall_cmd_list_all_zones"
+        },
+        {
+            "command": "/usr/bin/getconf PAGE_SIZE",
+            "pattern": [],
+            "symbolic_name": "getconf_pagesize"
         },
         {
             "command": "/usr/sbin/getenforce",
@@ -236,6 +318,11 @@
             "command": "/usr/sbin/gluster volume info",
             "pattern": [],
             "symbolic_name": "gluster_v_info"
+        },
+        {
+            "command": "/usr/sbin/gluster peer status",
+            "pattern": [],
+            "symbolic_name": "gluster_peer_status"
         },
         {
             "command": "/usr/sbin/gluster volume status",
@@ -258,7 +345,7 @@
             "symbolic_name": "grubby_default_index"
         },
         {
-            "command": "/usr/sbin/grubby --default-kernel",
+            "command": "/sbin/grubby --default-kernel",
             "pattern": [],
             "symbolic_name": "grubby_default_kernel"
         },
@@ -268,6 +355,11 @@
                 "heat-manage"
             ],
             "symbolic_name": "heat_crontab"
+        },
+        {
+            "command": "/bin/hostname",
+            "pattern": [],
+            "symbolic_name": "hostname_default"
         },
         {
             "command": "/bin/hostname -f",
@@ -280,19 +372,19 @@
             "symbolic_name": "ip_addresses"
         },
         {
+            "command": "/bin/hostname -s",
+            "pattern": [],
+            "symbolic_name": "hostname_short"
+        },
+        {
             "command": "/usr/sbin/httpd -V",
             "pattern": [],
             "symbolic_name": "httpd_V"
         },
         {
-            "command": "/usr/sbin/httpd.event -V",
+            "command": "python -m insights.tools.cat --no-header httpd_on_nfs",
             "pattern": [],
-            "symbolic_name": "httpd_event_V"
-        },
-        {
-            "command": "/usr/sbin/httpd.worker -V",
-            "pattern": [],
-            "symbolic_name": "httpd_worker_V"
+            "symbolic_name": "httpd_on_nfs"
         },
         {
             "command": "/usr/sbin/httpd -M",
@@ -306,7 +398,7 @@
             "image": true
         },
         {
-            "command": "/sbin/ip -s link",
+            "command": "/sbin/ip -s -d link",
             "pattern": [],
             "symbolic_name": "ip_s_link"
         },
@@ -369,6 +461,11 @@
             "symbolic_name": "keystone_crontab"
         },
         {
+            "command": "/usr/sbin/kpatch list",
+            "pattern": [],
+            "symbolic_name": "kpatch_list"
+        },
+        {
             "command": "/usr/bin/find -L /lib /lib64 -name 'libkeyutils.so*'",
             "pattern": [],
             "symbolic_name": "libkeyutils"
@@ -404,12 +501,12 @@
             "symbolic_name": "ls_disk"
         },
         {
-            "command": "/bin/ls -lanR /var/lib/docker/volumes",
+            "command": "/bin/ls -lan /sys/devices/system/edac/mc",
             "pattern": [],
-            "symbolic_name": "ls_docker_volumes"
+            "symbolic_name": "ls_edac_mc"
         },
         {
-            "command": "/bin/ls -lanR /etc",
+            "command": "/bin/ls -lan /etc /etc/cloud/cloud.cfg.d /etc/nova/migration /etc/pki/ovirt-vmconsole /etc/pki/tls/certs /etc/pki/tls/private /etc/sysconfig",
             "pattern": [],
             "symbolic_name": "ls_etc"
         },
@@ -439,6 +536,18 @@
             "symbolic_name": "ls_var_lib_nova_instances"
         },
         {
+            "command": "/bin/ls -ld /var/opt/mssql",
+            "pattern": [],
+            "symbolic_name": "ls_var_opt_mssql"
+        },
+        {
+            "command": "/bin/ls -lan /usr/lib64",
+            "pattern": [
+                "total"
+            ],
+            "symbolic_name": "ls_usr_lib64"
+        },
+        {
             "command": "/bin/ls -ln /usr/sbin",
             "pattern": [
                 "total"
@@ -449,6 +558,11 @@
             "command": "/bin/ls -la /var/log /var/log/audit",
             "pattern": [],
             "symbolic_name": "ls_var_log"
+        },
+        {
+            "command": "/bin/ls -la /var/opt/mssql/log",
+            "pattern": [],
+            "symbolic_name": "ls_var_opt_mssql_log"
         },
         {
             "command": "/bin/ls -la /dev/null /var/www",
@@ -476,9 +590,19 @@
             "symbolic_name": "ls_ocp_cni_openshift_sdn"
         },
         {
+            "command": "/bin/ls -l /var/lib/origin/openshift.local.volumes/pods",
+            "pattern": [],
+            "symbolic_name": "ls_origin_local_volumes_pods"
+        },
+        {
             "command": "/bin/ls -lan /",
             "pattern": [],
             "symbolic_name": "ls_osroot"
+        },
+        {
+            "command": "/bin/ls -lan /run/systemd/generator",
+            "pattern": [],
+            "symbolic_name": "ls_run_systemd_generator"
         },
         {
             "command": "/bin/ls -ln /var/tmp",
@@ -499,6 +623,11 @@
             "symbolic_name": "lsblk_pairs"
         },
         {
+            "command": "/usr/bin/lscpu",
+            "pattern": [],
+            "symbolic_name": "lscpu"
+        },
+        {
             "command": "/sbin/lsmod",
             "pattern": [],
             "symbolic_name": "lsmod"
@@ -510,6 +639,7 @@
                 "/var/log/journal",
                 "COMMAND",
                 "libcrypto",
+                "liblvm2cmd.so",
                 "libssl",
                 "libssl.so",
                 "lsnrctl",
@@ -535,10 +665,21 @@
             "symbolic_name": "lssap"
         },
         {
+            "command": "/usr/sbin/lvmconfig --type full",
+            "pattern": [],
+            "symbolic_name": "lvmconfig"
+        },
+        {
+            "command": "/usr/sbin/lvm dumpconfig --type full",
+            "pattern": [],
+            "symbolic_name": "lvmconfig"
+        },
+        {
             "command": "/usr/sap/hostctrl/exe/saphostctrl -function GetCIMObject -enuminstances SAPInstance",
             "pattern": [
                 "******",
                 "CreationClassName",
+                "FullQualifiedHostname",
                 "Hostname",
                 "InstanceName",
                 "SID",
@@ -573,14 +714,34 @@
             "symbolic_name": "max_uid"
         },
         {
-            "command": "/usr/bin/md5sum /dev/null /etc/pki/{product,product-default}/69.pem",
+            "command": "/usr/bin/md5sum /etc/pki/product/69.pem",
             "pattern": [],
             "symbolic_name": "md5chk_files"
         },
         {
-            "command": "/usr/bin/find /sys/bus/pci/devices/*/mlx4_port[0-9] -print -exec cat {} \\;",
+            "command": "/usr/bin/md5sum /etc/pki/product-default/69.pem",
             "pattern": [],
-            "symbolic_name": "mlx4_port"
+            "symbolic_name": "md5chk_files"
+        },
+        {
+            "command": "/usr/bin/md5sum /usr/lib/libsoftokn3.so",
+            "pattern": [],
+            "symbolic_name": "md5chk_files"
+        },
+        {
+            "command": "/usr/bin/md5sum /usr/lib64/libsoftokn3.so",
+            "pattern": [],
+            "symbolic_name": "md5chk_files"
+        },
+        {
+            "command": "/usr/bin/md5sum /usr/lib/libfreeblpriv3.so",
+            "pattern": [],
+            "symbolic_name": "md5chk_files"
+        },
+        {
+            "command": "/usr/bin/md5sum /usr/lib64/libfreeblpriv3.so",
+            "pattern": [],
+            "symbolic_name": "md5chk_files"
         },
         {
             "command": "/bin/mount",
@@ -596,6 +757,26 @@
             "command": "/sbin/modinfo i40e",
             "pattern": [],
             "symbolic_name": "modinfo_i40e"
+        },
+        {
+            "command": "/sbin/modinfo igb",
+            "pattern": [],
+            "symbolic_name": "modinfo_igb"
+        },
+        {
+            "command": "/sbin/modinfo ixgbe",
+            "pattern": [],
+            "symbolic_name": "modinfo_ixgbe"
+        },
+        {
+            "command": "/sbin/modinfo veth",
+            "pattern": [],
+            "symbolic_name": "modinfo_veth"
+        },
+        {
+            "command": "/sbin/modinfo vmxnet3",
+            "pattern": [],
+            "symbolic_name": "modinfo_vmxnet3"
         },
         {
             "command": "/usr/bin/find /sys/devices/virtual/net/ -name multicast_querier -print -exec cat {} \\;",
@@ -620,9 +801,67 @@
         {
             "command": "/usr/sbin/named-checkconf -p",
             "pattern": [
+                "DISABLE-ALGORITHMS",
+                "DISABLE-DS-DIGESTS",
                 "DNSSEC-ENABLE",
+                "DSA",
+                "Disable-Algorithms",
+                "Disable-Ds-Digests",
                 "Dnssec-Enable",
-                "dnssec-enable"
+                "Dsa",
+                "ECCGOST",
+                "ECDSAP256SHA256",
+                "ECDSAP384SHA384",
+                "Eccgost",
+                "Ecdsap256Sha256",
+                "Ecdsap384Sha384",
+                "GOST",
+                "Gost",
+                "NSEC3DSA",
+                "NSEC3RSASHA1",
+                "Nsec3Dsa",
+                "Nsec3Rsasha1",
+                "RSAMD5",
+                "RSASHA1",
+                "RSASHA256",
+                "RSASHA512",
+                "Rsamd5",
+                "Rsasha1",
+                "Rsasha256",
+                "Rsasha512",
+                "SHA-1",
+                "SHA-256",
+                "SHA-384",
+                "SHA1",
+                "SHA256",
+                "SHA384",
+                "Sha-1",
+                "Sha-256",
+                "Sha-384",
+                "Sha1",
+                "Sha256",
+                "Sha384",
+                "disable-algorithms",
+                "disable-ds-digests",
+                "dnssec-enable",
+                "dsa",
+                "eccgost",
+                "ecdsap256sha256",
+                "ecdsap384sha384",
+                "gost",
+                "nsec3dsa",
+                "nsec3rsasha1",
+                "rsamd5",
+                "rsasha1",
+                "rsasha256",
+                "rsasha512",
+                "sha-1",
+                "sha-256",
+                "sha-384",
+                "sha1",
+                "sha256",
+                "sha384",
+                "}"
             ],
             "symbolic_name": "named_checkconf_p"
         },
@@ -630,6 +869,11 @@
             "command": "/bin/ls /var/run/netns",
             "pattern": [],
             "symbolic_name": "namespace"
+        },
+        {
+            "command": "/usr/bin/ndctl list -Ni",
+            "pattern": [],
+            "symbolic_name": "ndctl_list_Ni"
         },
         {
             "command": "/bin/netstat -neopa",
@@ -677,6 +921,11 @@
             "symbolic_name": "nova_migration_uid"
         },
         {
+            "command": "/usr/bin/hammer --config /root/.hammer/cli.modules.d/foreman.yml --output csv task list --search 'state=running AND ( label=Actions::Candlepin::ListenOnCandlepinEvents OR label=Actions::Katello::EventQueue::Monitor )'",
+            "pattern": [],
+            "symbolic_name": "hammer_task_list"
+        },
+        {
             "command": "/usr/sbin/ntpq -c 'rv 0 leap'",
             "pattern": [],
             "symbolic_name": "ntpq_leap"
@@ -712,6 +961,11 @@
             "symbolic_name": "openvswitch_other_config"
         },
         {
+            "command": "/usr/bin/ovs-vsctl list bridge",
+            "pattern": [],
+            "symbolic_name": "ovs_vsctl_list_bridge"
+        },
+        {
             "command": "/usr/bin/ovs-vsctl show",
             "pattern": [],
             "symbolic_name": "ovs_vsctl_show"
@@ -722,9 +976,41 @@
             "symbolic_name": "passenger_status"
         },
         {
+            "command": "/usr/bin/find /sys/devices/ -maxdepth 10 -mindepth 9 -name stat -type f",
+            "pattern": [],
+            "symbolic_name": "pci_rport_target_disk_paths"
+        },
+        {
+            "command": "/usr/sbin/pcs quorum status",
+            "pattern": [],
+            "symbolic_name": "pcs_quorum_status"
+        },
+        {
             "command": "/usr/sbin/pcs status",
             "pattern": [],
             "symbolic_name": "pcs_status"
+        },
+        {
+            "command": "/bin/ps alxwww",
+            "pattern": [
+                "/usr/bin/gnome-shell",
+                "/usr/bin/openshift start master",
+                "/usr/bin/openshift start node",
+                "COMMAND",
+                "bash",
+                "chronyd",
+                "corosync",
+                "docker",
+                "ntpd",
+                "openshift start master api",
+                "openshift start master controllers",
+                "openshift start node",
+                "ora",
+                "pacemakerd",
+                "pcsd",
+                "tuned"
+            ],
+            "symbolic_name": "ps_alxwww"
         },
         {
             "command": "/bin/ps aux",
@@ -734,21 +1020,30 @@
                 "/usr/bin/docker-current",
                 "/usr/bin/docker-current daemon",
                 "/usr/bin/dockerd-current",
+                "/usr/bin/gnome-shell",
+                "/usr/bin/hyperkube kubelet",
                 "/usr/bin/openshift start master",
                 "/usr/bin/openshift start node",
                 "COMMAND",
                 "STAP/8.2",
+                "bash",
                 "ceph-osd",
                 "chronyd",
+                "corosync",
+                "docker",
                 "mysqld",
                 "ntpd",
+                "oc observe csr",
                 "openshift start master api",
                 "openshift start master controllers",
                 "openshift start node",
+                "ora",
+                "pacemakerd",
+                "pcsd",
                 "phc2sys",
                 "postgres",
                 "ptp4l",
-                "tomcat"
+                "tuned"
             ],
             "symbolic_name": "ps_aux"
         },
@@ -760,28 +1055,46 @@
         {
             "command": "/bin/ps auxww",
             "pattern": [
+                "/opt/perf/bin/midaemon",
                 "/sbin/multipathd",
-                "/usr/bin/celery worker",
+                "/usr/bin/gnome-shell",
+                "/usr/bin/openshift start master",
+                "/usr/bin/openshift start node",
+                "/usr/bin/teamd",
                 "/usr/sbin/fcoemon --syslog",
                 "COMMAND",
+                "bash",
                 "catalina.base",
                 "ceilometer-coll",
                 "chronyd",
                 "cmirrord",
+                "corosync",
+                "docker",
+                "elasticsearch",
+                "goferd",
                 "greenplum",
                 "httpd",
                 "iscsid",
-                "java",
-                "jboss",
+                "multipath",
                 "nfs-server",
                 "nfsd",
                 "nginx",
+                "nova-compute",
                 "ntpd",
+                "octavia-worker",
+                "openshift start master api",
+                "openshift start master controllers",
+                "openshift start node",
+                "ora",
+                "pacemakerd",
+                "pcsd",
+                "pkla-check-auth",
                 "postgres",
                 "smbd",
                 "target_completi",
                 "taskomaticd",
                 "tgtd",
+                "tuned",
                 "virt-who"
             ],
             "symbolic_name": "ps_auxww"
@@ -789,9 +1102,25 @@
         {
             "command": "/bin/ps -ef",
             "pattern": [
+                "/usr/bin/gnome-shell",
+                "/usr/bin/openshift start master",
+                "/usr/bin/openshift start node",
                 "CMD",
+                "bash",
+                "chronyd",
+                "corosync",
+                "docker",
+                "neutron-ns-metadata-proxy",
                 "nginx: master process",
-                "nginx: worker process"
+                "nginx: worker process",
+                "ntpd",
+                "openshift start master api",
+                "openshift start master controllers",
+                "openshift start node",
+                "ora",
+                "pacemakerd",
+                "pcsd",
+                "tuned"
             ],
             "symbolic_name": "ps_ef"
         },
@@ -821,6 +1150,21 @@
             "symbolic_name": "rabbitmq_users"
         },
         {
+            "command": "/usr/bin/readlink -e /etc/mtab",
+            "pattern": [],
+            "symbolic_name": "readlink_e_etc_mtab"
+        },
+        {
+            "command": "/usr/bin/readlink -e /etc/origin/node/certificates/kubelet-client-current.pem",
+            "pattern": [],
+            "symbolic_name": "readlink_e_shift_cert_client"
+        },
+        {
+            "command": "/usr/bin/readlink -e /etc/origin/node/certificates/kubelet-server-current.pem",
+            "pattern": [],
+            "symbolic_name": "readlink_e_shift_cert_server"
+        },
+        {
             "command": "/usr/bin/rhn-schema-version",
             "pattern": [],
             "symbolic_name": "rhn_schema_version"
@@ -831,6 +1175,11 @@
             "symbolic_name": "rhev_data_center"
         },
         {
+            "command": "/usr/sbin/rndc status",
+            "pattern": [],
+            "symbolic_name": "rndc_status"
+        },
+        {
             "command": "/usr/bin/crontab -l -u root",
             "pattern": [
                 "heat-manage"
@@ -838,9 +1187,19 @@
             "symbolic_name": "root_crontab"
         },
         {
-            "command": "/bin/rpm -V coreutils procps procps-ng shadow-utils passwd sudo",
+            "command": "/bin/rpm -V coreutils procps procps-ng shadow-utils passwd sudo chrony",
             "pattern": [],
-            "symbolic_name": "rpm__V_packages"
+            "symbolic_name": "rpm_V_packages"
+        },
+        {
+            "command": "/usr/bin/mongo pulp_database --eval 'db.serverStatus().storageEngine'",
+            "pattern": [],
+            "symbolic_name": "satellite_mongodb_storage_engine"
+        },
+        {
+            "command": "/usr/bin/sealert -l \"*\"",
+            "pattern": [],
+            "symbolic_name": "sealert"
         },
         {
             "command": "/usr/sbin/sestatus -b",
@@ -858,19 +1217,16 @@
             "symbolic_name": "software_collections_list"
         },
         {
-            "command": "/usr/bin/subscription-manager identity",
+            "command": "/usr/sbin/subscription-manager identity",
             "pattern": [],
             "symbolic_name": "subscription_manager_id"
         },
         {
-            "command": "/usr/bin/subscription-manager release --show",
-            "pattern": [],
-            "symbolic_name": "subscription_manager_release_show"
-        },
-        {
-            "command": "/usr/bin/subscription-manager repos --list-enabled",
-            "pattern": [],
-            "symbolic_name": "subscription_manager_repos_list_enabled"
+            "command": "/usr/bin/find /etc/pki/product-default/ /etc/pki/product/ -name '*pem' -exec rct cat-cert --no-content '{}' \\;",
+            "pattern": [
+                "ID:"
+            ],
+            "symbolic_name": "subscription_manager_installed_product_ids"
         },
         {
             "command": "/usr/sbin/ss -tupna",
@@ -891,6 +1247,11 @@
             "command": "/sbin/sysctl -a",
             "pattern": [],
             "symbolic_name": "sysctl"
+        },
+        {
+            "command": "/bin/systemctl cat rpcbind.socket",
+            "pattern": [],
+            "symbolic_name": "systemctl_cat_rpcbind_socket"
         },
         {
             "command": "/bin/systemctl show openstack-cinder-volume",
@@ -928,20 +1289,44 @@
             "symbolic_name": "systemctl_httpd"
         },
         {
+            "command": "/bin/systemctl show nginx",
+            "pattern": [],
+            "symbolic_name": "systemctl_nginx"
+        },
+        {
             "command": "/bin/systemctl show smart_proxy_dynflow_core",
             "pattern": [],
             "symbolic_name": "systemctl_smartpdc"
         },
         {
+            "command": "/bin/systemctl show *.service",
+            "pattern": [],
+            "symbolic_name": "systemctl_show_all_services"
+        },
+        {
+            "command": "/bin/systemctl show *.target",
+            "pattern": [],
+            "symbolic_name": "systemctl_show_target"
+        },
+        {
+            "command": "/bin/systemd-analyze blame",
+            "pattern": [],
+            "symbolic_name": "systemd_analyze_blame"
+        },
+        {
+            "command": "/usr/bin/systemctl cat docker.service",
+            "pattern": [],
+            "symbolic_name": "systemd_docker"
+        },
+        {
+            "command": "/usr/bin/systemctl cat atomic-openshift-node.service",
+            "pattern": [],
+            "symbolic_name": "systemd_openshift_node"
+        },
+        {
             "command": "/bin/systool -b scsi -v",
             "pattern": [],
             "symbolic_name": "systool_b_scsi_v"
-        },
-        {
-            "command": "/usr/bin/teamdctl  state dump",
-            "pattern": [],
-            "pre_command": "iface",
-            "symbolic_name": "teamdctl_state_dump"
         },
         {
             "command": "/usr/bin/find /usr/share -maxdepth 1 -name 'tomcat*' -exec /bin/grep -R -s 'VirtualDirContext' --include '*.xml' '{}' +",
@@ -954,11 +1339,6 @@
             "symbolic_name": "tuned_adm"
         },
         {
-            "command": "/usr/bin/ulimit -a -H",
-            "pattern": [],
-            "symbolic_name": "ulimit_hard"
-        },
-        {
             "command": "/bin/uname -a",
             "pattern": [],
             "symbolic_name": "uname"
@@ -967,6 +1347,11 @@
             "command": "/usr/bin/uptime",
             "pattern": [],
             "symbolic_name": "uptime"
+        },
+        {
+            "command": "/usr/bin/vdo status",
+            "pattern": [],
+            "symbolic_name": "vdo_status"
         },
         {
             "command": "/sbin/vgdisplay -vv",
@@ -994,9 +1379,24 @@
             "symbolic_name": "woopsie"
         },
         {
-            "command": "/usr/bin/yum -C repolist",
+            "command": "yum -C --noplugins list available",
+            "pattern": [],
+            "symbolic_name": "yum_list_available"
+        },
+        {
+            "command": "yum -C --noplugins list installed",
+            "pattern": [],
+            "symbolic_name": "yum_list_installed"
+        },
+        {
+            "command": "/usr/bin/yum -C --noplugins repolist",
             "pattern": [],
             "symbolic_name": "yum_repolist"
+        },
+        {
+            "command": "/usr/sbin/zdump -v /etc/localtime -c 2019,2039",
+            "pattern": [],
+            "symbolic_name": "zdump_v"
         }
     ],
     "files": [
@@ -1024,6 +1424,14 @@
             "symbolic_name": "etc_machine_id"
         },
         {
+            "file": "/etc/etcd/etcd.conf",
+            "pattern": [
+                "ETCD_DATA_DIR",
+                "["
+            ],
+            "symbolic_name": "etcd_conf"
+        },
+        {
             "file": "/proc/1/cgroup",
             "pattern": [],
             "symbolic_name": "init_process_cgroup"
@@ -1037,11 +1445,34 @@
             "file": "/var/log/audit/audit.log",
             "pattern": [
                 "comm=\"logrotate\" path=\"/var/log/candlepin",
-                "comm=\"mongod\"",
                 "comm=\"virtlogd\" name=\"console.log\"",
                 "type=AVC"
             ],
             "symbolic_name": "audit_log"
+        },
+        {
+            "file": "/etc/cloud/cloud.cfg.d/99-custom-networking.cfg",
+            "pattern": [],
+            "symbolic_name": "cloud_init_custom_network"
+        },
+        {
+            "file": "/var/log/cloud-init.log",
+            "pattern": [
+                "401",
+                "Attempting to load yaml from string of length 59 with allowed root types",
+                "Failed loading yaml blob. Invalid format at line 1 column 1",
+                "Network config is likely broken",
+                "No available network renderers found",
+                "Read 59 bytes from /etc/cloud/cloud.cfg.d/99-datasource.cfg",
+                "Unable to render networking",
+                "WARNING",
+                "bad status code",
+                "failed",
+                "http://169.254.169.254",
+                "sysconfig",
+                "url_helper.py"
+            ],
+            "symbolic_name": "cloud_init_log"
         },
         {
             "file": "/etc/audit/auditd.conf",
@@ -1101,6 +1532,11 @@
             "symbolic_name": "cciss"
         },
         {
+            "file": "/sys/bus/usb/drivers/cdc_wdm/module/refcnt",
+            "pattern": [],
+            "symbolic_name": "cdc_wdm"
+        },
+        {
             "file": "/etc/ceilometer/ceilometer.conf",
             "pattern": [],
             "symbolic_name": "ceilometer_conf"
@@ -1125,6 +1561,26 @@
             "symbolic_name": "ceilometer_compute_log"
         },
         {
+            "file": "/var/log/ceilometer/collector.log",
+            "pattern": [
+                "DBDataError",
+                "ERROR",
+                "Out of range value for column",
+                "pymysql.err.DataError"
+            ],
+            "symbolic_name": "ceilometer_collector_log"
+        },
+        {
+            "file": "/var/log/containers/ceilometer/collector.log",
+            "pattern": [
+                "DBDataError",
+                "ERROR",
+                "Out of range value for column",
+                "pymysql.err.DataError"
+            ],
+            "symbolic_name": "ceilometer_collector_log"
+        },
+        {
             "file": "/etc/ceph/ceph.conf",
             "pattern": [
                 "[",
@@ -1141,7 +1597,7 @@
             "symbolic_name": "ceph_conf"
         },
         {
-            "file": "/var/log/ceph/ceph.log",
+            "file": "/var/log/ceph/()ceph.log*",
             "pattern": [
                 "[WRN] slow request"
             ],
@@ -1153,6 +1609,11 @@
                 "common/Thread.cc"
             ],
             "symbolic_name": "ceph_osd_log"
+        },
+        {
+            "file": "/proc/cgroups",
+            "pattern": [],
+            "symbolic_name": "cgroups"
         },
         {
             "file": "/etc/chrony.conf",
@@ -1175,10 +1636,30 @@
             "symbolic_name": "cinder_conf"
         },
         {
+            "file": "/var/log/cinder/cinder-api.log",
+            "pattern": [
+                "DEBUG oslo.messaging._drivers.impl_rabbit",
+                "Timed out waiting for RPC response",
+                "Too many connections"
+            ],
+            "symbolic_name": "cinder_api_log"
+        },
+        {
+            "file": "/var/log/containers/cinder/cinder-api.log",
+            "pattern": [
+                "DEBUG oslo.messaging._drivers.impl_rabbit",
+                "Timed out waiting for RPC response",
+                "Too many connections"
+            ],
+            "symbolic_name": "cinder_api_log"
+        },
+        {
             "file": "/var/log/cinder/volume.log",
             "pattern": [
+                "DEBUG oslo.messaging._drivers.impl_rabbit",
                 "Image cloning unsuccessful for image",
                 "Message: NFS file could not be discovered.",
+                "Timed out waiting for RPC response",
                 "[Errno 24] Too many open files"
             ],
             "symbolic_name": "cinder_volume_log"
@@ -1194,6 +1675,11 @@
             "file": "/proc/cmdline",
             "pattern": [],
             "symbolic_name": "cmdline"
+        },
+        {
+            "file": "/etc/cni/net.d/87-podman-bridge.conflist",
+            "pattern": [],
+            "symbolic_name": "cni_podman_bridge_conf"
         },
         {
             "file": "/etc/corosync/corosync.conf",
@@ -1261,6 +1747,33 @@
             "symbolic_name": "cpuset_cpus"
         },
         {
+            "file": "/etc/cron.daily/rhsmd",
+            "pattern": [
+                "if [ -n $config ]; then"
+            ],
+            "symbolic_name": "cron_daily_rhsmd"
+        },
+        {
+            "file": "/etc/crypto-policies/config",
+            "pattern": [],
+            "symbolic_name": "crypto_policies_config"
+        },
+        {
+            "file": "/etc/crypto-policies/state/current",
+            "pattern": [],
+            "symbolic_name": "crypto_policies_state_current"
+        },
+        {
+            "file": "/etc/crypto-policies/back-ends/opensshserver.config",
+            "pattern": [],
+            "symbolic_name": "crypto_policies_opensshserver"
+        },
+        {
+            "file": "/etc/crypto-policies/back-ends/bind.config",
+            "pattern": [],
+            "symbolic_name": "crypto_policies_bind"
+        },
+        {
             "file": "/sys/kernel/debug/x86/retp_enabled",
             "pattern": [],
             "symbolic_name": "x86_retp_enabled"
@@ -1268,9 +1781,32 @@
         {
             "file": "/var/log/dirsrv/.*/()*(errors|errors\\.2.*)",
             "pattern": [
+                "DSRetroclPlugin - delete_changerecord: could not delete change record",
                 "We recommend to increase the entry cache size nsslapd-cachememsize"
             ],
             "symbolic_name": "dirsrv_errors"
+        },
+        {
+            "file": "/var/log/dmesg",
+            "pattern": [
+                "Amazon EC2",
+                "CVE-2017-1000364",
+                "CVE-2018-14634",
+                "EFI",
+                "Efi",
+                "FEATURE IBPB_SUPPORT",
+                "FEATURE SPEC_CTRL",
+                "Hyper-V Host Build:",
+                "Kernel page table isolation",
+                "L1TF",
+                "L1Tf",
+                "Linux version",
+                "__cpufreq_add_dev",
+                "efi",
+                "l1tf",
+                "x86/pti"
+            ],
+            "symbolic_name": "dmesg_log"
         },
         {
             "file": "/etc/dnf/modules.d/.*\\.module",
@@ -1288,9 +1824,19 @@
             "symbolic_name": "docker_storage_setup"
         },
         {
+            "file": "/etc/sysconfig/docker-storage",
+            "pattern": [],
+            "symbolic_name": "docker_storage"
+        },
+        {
             "file": "/etc/sysconfig/docker",
             "pattern": [],
             "symbolic_name": "docker_sysconfig"
+        },
+        {
+            "file": "/usr/lib/dracut/modules.d/99kdumpbase/kdump-capture.service",
+            "pattern": [],
+            "symbolic_name": "dracut_kdump_capture_service"
         },
         {
             "file": "/var/log/ovirt-engine/engine.log",
@@ -1312,7 +1858,9 @@
             "file": "/var/log/ovirt-engine/server.log",
             "pattern": [
                 "ERROR [org.jboss.as.controller.management-operation]",
-                "Operation (\"deploy\") failed"
+                "INFO  [org.wildfly.extension.undertow",
+                "Operation (\"deploy\") failed",
+                "Registered web context: '/ovirt-engine/api' for server"
             ],
             "symbolic_name": "ovirt_engine_server_log"
         },
@@ -1324,16 +1872,6 @@
             "symbolic_name": "ovirt_engine_ui_log"
         },
         {
-            "file": "/var/log/ovirt-engine/boot.log",
-            "pattern": [],
-            "symbolic_name": "ovirt_engine_boot_log"
-        },
-        {
-            "file": "/var/log/ovirt-engine/console.log",
-            "pattern": [],
-            "symbolic_name": "ovirt_engine_console_log"
-        },
-        {
             "file": "/etc/systemd/()*journald\\.conf",
             "pattern": [],
             "symbolic_name": "etc_journald_conf"
@@ -1342,6 +1880,18 @@
             "file": "/etc/systemd/journald.conf.d/()*.+\\.conf",
             "pattern": [],
             "symbolic_name": "etc_journald_conf_d"
+        },
+        {
+            "file": "/etc/firewalld/firewalld.conf",
+            "pattern": [
+                "AllowZoneDrifting"
+            ],
+            "symbolic_name": "firewalld_conf"
+        },
+        {
+            "file": "/var/log/ipa/healthcheck/healthcheck.log",
+            "pattern": [],
+            "symbolic_name": "freeipa_healthcheck_log"
         },
         {
             "file": "/etc/fstab",
@@ -1364,6 +1914,11 @@
             "symbolic_name": "grub_efi_conf"
         },
         {
+            "file": "/boot/efi/EFI/redhat/grubenv",
+            "pattern": [],
+            "symbolic_name": "grub2_efi_grubenv"
+        },
+        {
             "file": "/boot/grub/grub.conf",
             "pattern": [],
             "symbolic_name": "grub_conf"
@@ -1377,6 +1932,11 @@
             "file": "/boot/grub2/grub.cfg",
             "pattern": [],
             "symbolic_name": "grub2_cfg"
+        },
+        {
+            "file": "/boot/grub2/grubenv",
+            "pattern": [],
+            "symbolic_name": "grub2_grubenv"
         },
         {
             "file": "/etc/haproxy/haproxy.cfg",
@@ -1399,39 +1959,30 @@
             "symbolic_name": "heat_conf"
         },
         {
+            "file": "/var/log/heat/heat-api.log",
+            "pattern": [
+                "Too many connections"
+            ],
+            "symbolic_name": "heat_api_log"
+        },
+        {
+            "file": "/var/log/heat/heat_api.log",
+            "pattern": [
+                "Too many connections"
+            ],
+            "symbolic_name": "heat_api_log"
+        },
+        {
+            "file": "/var/log/containers/heat/heat_api.log",
+            "pattern": [
+                "Too many connections"
+            ],
+            "symbolic_name": "heat_api_log"
+        },
+        {
             "file": "/etc/hosts",
             "pattern": [],
             "symbolic_name": "hosts"
-        },
-        {
-            "file": "/etc/httpd/conf/()*httpd\\.conf",
-            "pattern": [],
-            "symbolic_name": "httpd_conf"
-        },
-        {
-            "file": "/etc/httpd/conf.d/()*.+\\.conf",
-            "pattern": [],
-            "symbolic_name": "httpd_conf_d"
-        },
-        {
-            "file": "/opt/rh/httpd24/root/etc/httpd/conf/httpd.conf",
-            "pattern": [],
-            "symbolic_name": "httpd_conf_scl_httpd24"
-        },
-        {
-            "file": "/opt/rh/httpd24/root/etc/httpd/conf.d/()*.+\\.conf",
-            "pattern": [],
-            "symbolic_name": "httpd_conf_scl_httpd24"
-        },
-        {
-            "file": "/opt/rh/jbcs-httpd24/root/etc/httpd/conf/httpd.conf",
-            "pattern": [],
-            "symbolic_name": "httpd_conf_scl_jbcs_httpd24"
-        },
-        {
-            "file": "/opt/rh/jbcs-httpd24/root/etc/httpd/conf.d/()*.+\\.conf",
-            "pattern": [],
-            "symbolic_name": "httpd_conf_scl_jbcs_httpd24"
         },
         {
             "file": "/var/log/httpd/error_log",
@@ -1441,6 +1992,8 @@
                 "ModSecurity: collections_remove_stale: Failed deleting collection",
                 "Require ServerLimit > 0, setting to 1",
                 "Resource temporarily unavailable",
+                "The mpm module (prefork.c) is not supported by mod_http2",
+                "[crit] Memory allocation failed, aborting process",
                 "and would exceed the ServerLimit value of ",
                 "consider raising the MaxClients setting",
                 "consider raising the MaxRequestWorkers setting",
@@ -1455,6 +2008,20 @@
                 "not allowed, increasing to 1"
             ],
             "symbolic_name": "httpd_error_log"
+        },
+        {
+            "file": "/opt/rh/httpd24/root/etc/httpd/logs/error_log",
+            "pattern": [
+                "The mpm module (prefork.c) is not supported by mod_http2"
+            ],
+            "symbolic_name": "httpd24_httpd_error_log"
+        },
+        {
+            "file": "/opt/rh/jbcs-httpd24/root/etc/httpd/logs/error_log",
+            "pattern": [
+                "The mpm module (prefork.c) is not supported by mod_http2"
+            ],
+            "symbolic_name": "jbcs_httpd24_httpd_error_log"
         },
         {
             "file": "/etc/sysconfig/network-scripts/()*ifcfg-.*",
@@ -1516,9 +2083,40 @@
             "symbolic_name": "iptables_permanent"
         },
         {
+            "file": "/etc/ironic/ironic.conf",
+            "pattern": [
+                "["
+            ],
+            "symbolic_name": "ironic_conf"
+        },
+        {
+            "file": "/var/lib/config-data/puppet-generated/ironic/etc/ironic/ironic.conf",
+            "pattern": [
+                "["
+            ],
+            "symbolic_name": "ironic_conf"
+        },
+        {
+            "file": "/var/log/ironic-inspector/ironic-inspector.log",
+            "pattern": [
+                "Certificate did not match expected hostname",
+                "ERROR requests.packages.urllib3.connection"
+            ],
+            "symbolic_name": "ironic_inspector_log"
+        },
+        {
             "file": "/etc/kdump.conf",
             "pattern": [],
             "symbolic_name": "kdump_conf"
+        },
+        {
+            "file": "/boot/()config-.*",
+            "pattern": [
+                "CONFIG_BPF_SYSCALL",
+                "CONFIG_PREEMPT_RT_FULL",
+                "CONFIG_SMP"
+            ],
+            "symbolic_name": "kernel_config"
         },
         {
             "file": "/sys/kernel/kexec_crash_size",
@@ -1531,14 +2129,27 @@
             "symbolic_name": "krb5"
         },
         {
-            "file": "/etc/krb5.conf.d/()*.*\\.conf",
-            "pattern": [],
-            "symbolic_name": "krb5_conf_d"
-        },
-        {
             "file": "/sys/kernel/mm/ksm/run",
             "pattern": [],
             "symbolic_name": "ksmstate"
+        },
+        {
+            "file": "/var/log/libvirt/libvirtd.log",
+            "pattern": [
+                "qemuMigrationSrcNBDStorageCopyBlockdev:",
+                "virDomainBlockCommit:",
+                "virDomainBlockCopy:",
+                "virDomainBlockPull:",
+                "virDomainSnapshotCreateXML:"
+            ],
+            "symbolic_name": "libvirtd_log"
+        },
+        {
+            "file": "/var/log/libvirt/qemu/().*\\.log",
+            "pattern": [
+                "[CAUTION] This_is_the default_filter_string_for_all_large_files!"
+            ],
+            "symbolic_name": "libvirtd_qemu_log"
         },
         {
             "file": "/etc/security/()*limits\\.conf",
@@ -1584,92 +2195,146 @@
             "file": "/var/log/messages",
             "pattern": [
                 " disconnect jid=",
+                "\"/var/lib/pgsql/data\" is missing or empty",
+                "(enic): transmit queue 0 timed out",
+                ", type vxfs) has no security xattr handler",
+                "- image is referenced in one or more repositories",
                 "/input/input",
                 "11000 E11000 duplicate key error index: pulp_database.repo_profile_applicability.$profile_hash_-1_repo_id_-1",
-                ": Machine check events logged",
                 ": segfault at ",
                 ": session replaced: jid=",
                 "Abort command issued",
+                "Broken pipe",
+                "Buffer I/O error on device",
+                "Cannot assign requested address",
+                "Cannot assign requested address: AH00072",
+                "Connection amqps://subscription.rhn.redhat.com:5647 disconnected",
+                "Could not set",
+                "DHCPv4 lease renewal requested",
                 "DMA Status error.  Resetting chip",
-                "Dazed and confused, but trying to continue",
                 "Detected Tx Unit Hang",
+                "Device is still in reset",
                 "Device offlined - not ready after error recovery",
+                "Error I40E_AQ_RC_EINVAL adding RX filters on PF, promiscuous mode forced on",
                 "Error deleting EBS Disk volume aws",
-                "Error in FW/Card",
                 "Error running DeviceResume dm_task_run failed",
+                "Exception happened during processing of request from",
                 "Failed to bind socket: No such file or directory",
-                "Link down",
+                "Failed to extend thin",
                 "List /apis/image.openshift.io/v1/images",
+                "Loop callback failed with: Cannot allocate memory",
                 "MDC/MDIO access timeout",
-                "Machine Check Exception",
                 "Medium access timeout failure. Offlining disk!",
+                "MountVolume.SetUp succeeded for volume",
+                "NETDEV WATCHDOG",
                 "Neighbour table overflow",
+                "NetworkManager state is now CONNECTED_SITE",
+                "Orphaned pod",
                 "Out of MCCQ wrbs",
+                "Out of memory: Kill process",
                 "Out of memory: kill process",
-                "SCSI device reset on",
+                "PPM exceeds tolerance 500 PPM",
+                "ProcessExecutionError: Exit code: 1; Stdin: ; Stdout: ; Stderr: setting the network namespace",
+                "SCSI error: return code =",
                 "SDN initialization failed: Error: Existing service with IP: None is not part of service network",
                 "Scheduled import of stream",
-                "Sense Key : Illegal Request [current]",
                 "TX driver issue detected, PF reset issued",
                 "TX stuck with port_enabled=1: resetting channels",
-                "Temperature above threshold",
                 "This system does not support \"SSSE3\"",
-                "Uhhuh. NMI received for unknown reason",
+                "Throttling request took",
+                "TypeError: object of type 'NoneType' has no len()",
                 "Virtualization daemon",
                 "WRITE SAME failed. Manually zeroing",
                 "] trap divide error ",
+                "_NET_ACTIVE_WINDOW",
+                "as active slave; either",
                 "belongs to docker.service",
-                "blocked FC remote port time out",
                 "callbacks suppressed",
+                "canceled DHCP transaction, DHCP client pid",
                 "chardev: opening backend \"socket\" failed",
+                "clearing Tx timestamp hang",
+                "dev_set_mac_address of dev",
+                "device-mapper: multipath: Failing path",
                 "does not seem to be present, delaying initialization",
                 "drivers/input/input-leds.c:115 input_leds_connect",
+                "enabling it in",
+                "end_request: I/O error, dev",
                 "error Error on attach: Node not found",
+                "evicted, waiting for pod to be cleaned up",
                 "eviction manager: eviction criteria not yet met for threshold",
                 "eviction manager: must evict pod(s) to reclaim nodefsInodes",
+                "eviction manager: observations: signal=allocatableNodeFs.available, available: -",
                 "ext4_ext_search_left",
+                "failed to modify QP to RTR: -22",
                 "failed while handling",
+                "failed with error -110",
+                "failed! ALB mode requires that the base driver support setting the hw address also when the network",
                 "failed: Connection amqps:",
+                "failed: Invalid argument",
                 "failed: rpc error: code = 2 desc = unable to inspect docker image",
                 "fiid_obj_get: 'present_countdown_value': data not available",
                 "firewalld - dynamic firewall daemon",
                 "fit failure summary on nodes : Insufficient pods",
-                "heated above trip temperature",
+                "from image service failed: rpc error: code = Canceled desc = context canceled",
+                "host not found in upstream",
                 "http2: no cached connection was available",
+                "hv_netvsc vmbus_",
+                "hv_netvsc: probe of vmbus_",
                 "hw csum failure",
                 "in libnl.so.1",
                 "initiating reset due to tx timeout",
+                "invalid key/value pair in file /usr/lib/udev/rules.d/59-fc-wwpn-id.rules",
+                "ip_local_port_range: prefer different parity for start/end values",
                 "irq handler for vector (irq -1)",
                 "is beyond advertised capabilities",
+                "is down or the link is down",
+                "is greater than comparison timestamp",
+                "iscsiadm: iscsiadm: Could not log into all portals",
+                "kernel/softirq.c:159 local_bh_enable+",
+                "kernel: BUG: soft lockup",
                 "kernel: CIFS VFS: Unexpected SMB signature",
+                "kernel: INFO: task xfsaild/md",
+                "kernel: Memory cgroup out of memory: Kill process",
+                "kernel: TCP: out of memory -- consider tuning tcp_mem",
                 "kernel: bnx2fc: byte_count",
                 "kernel: kvm: disabled by bios",
                 "kernel: lockd: Unknown symbol register_inet6addr_notifier",
                 "kernel: lockd: Unknown symbol unregister_inet6addr_notifier",
                 "kernel: megasas: Found FW in FAULT state,will reset adapter.",
+                "kernel: nfs: server",
+                "kernel: possible SYN flooding on port",
                 "khash_super_prune_nolock",
+                "link status up for interface",
                 "megaraid_sas: FW detected to be in faultstate, restarting it",
                 "mode:0x20",
                 "multipathd.service operation timed out. Terminating",
                 "netlink_socket|ERR|fcntl: Too many open file",
-                "nf_conntrack: expectation table full",
-                "nf_conntrack: table full, dropping packet",
+                "nfs_reap_expired_delegations",
+                "not responding, timed out",
                 "page allocation failure",
                 "per_source_limit from",
+                "platform microcode: firmware: requesting",
                 "reservation conflict",
+                "returned a bad sequence-id error",
+                "rhsmd: rhsmd process exceeded runtime and was killed",
                 "segfault at",
                 "server kernel: rhsmcertd-worke",
                 "shm_open failed, Permission denied",
                 "skb_copy",
                 "skb_over_panic",
                 "start request repeated too quickly for docker.service",
+                "state changed timeout -> done",
                 "swapper: page allocation failure",
                 "systemd: Unit ip6tables.service entered failed state",
                 "systemd: Unit iptables.service entered failed state",
                 "systemd[1]: Received SIGCHLD from PID",
                 "tg3_start_xmit",
                 "there is a meaningful conflict",
+                "timed out",
+                "timeout before we got a set response",
                 "timeout; kill it",
+                "timing out command, waited",
+                "transmit queue",
                 "udev: renamed network interface",
                 "unknown filesystem type 'binfmt_misc'",
                 "vdsm-tool: EnvironmentError: Failed to restore the persisted networks",
@@ -1690,17 +2355,37 @@
         {
             "file": "/etc/()*mongod.conf",
             "pattern": [
-                "dbpath",
-                "destination",
-                "syslog",
-                "systemLog"
+                "dbpath"
             ],
             "symbolic_name": "mongod_conf"
+        },
+        {
+            "file": "/var/opt/mssql/mssql.conf",
+            "pattern": [],
+            "symbolic_name": "mssql_conf"
         },
         {
             "file": "/etc/multipath.conf",
             "pattern": [],
             "symbolic_name": "multipath_conf"
+        },
+        {
+            "file": "/var/log/mysql/mysqld.log",
+            "pattern": [
+                "OpenSSL internal error, assertion failed: Digest MD5 forbidden in FIPS mode!",
+                "Too many open files",
+                "[ERROR]"
+            ],
+            "symbolic_name": "mysql_log"
+        },
+        {
+            "file": "/var/log/mysql.log",
+            "pattern": [
+                "OpenSSL internal error, assertion failed: Digest MD5 forbidden in FIPS mode!",
+                "Too many open files",
+                "[ERROR]"
+            ],
+            "symbolic_name": "mysql_log"
         },
         {
             "file": "/etc/sysconfig/netconsole",
@@ -1734,46 +2419,67 @@
             "symbolic_name": "nfs_exports_d"
         },
         {
-            "file": "/etc/nginx/()*nginx.conf",
+            "file": "/etc/nginx/().*.conf",
             "pattern": [],
             "symbolic_name": "nginx_conf"
         },
         {
-            "file": "/etc/opt/rh/rh-nginx112/nginx/()*nginx.conf",
+            "file": "/etc/nginx/conf.d/()*",
             "pattern": [],
             "symbolic_name": "nginx_conf"
         },
         {
-            "file": "/opt/rh/nginx14/root/etc/nginx/()*nginx.conf",
+            "file": "/etc/nginx/default.d/()*",
             "pattern": [],
             "symbolic_name": "nginx_conf"
         },
         {
-            "file": "/opt/rh/nginx16/root/etc/nginx/()*nginx.conf",
+            "file": "/etc/opt/rh/rh-nginx()*/nginx/()*.conf",
             "pattern": [],
             "symbolic_name": "nginx_conf"
         },
         {
-            "file": "/etc/opt/rh/rh-nginx110/nginx/()*nginx.conf",
+            "file": "/etc/opt/rh/rh-nginx()*/nginx/conf.d/()*",
             "pattern": [],
             "symbolic_name": "nginx_conf"
         },
         {
-            "file": "/etc/opt/rh/rh-nginx18/nginx/()*nginx.conf",
+            "file": "/etc/opt/rh/rh-nginx()*/nginx/default.d/()*",
+            "pattern": [],
+            "symbolic_name": "nginx_conf"
+        },
+        {
+            "file": "/opt/rh/nginx()*/root/etc/nginx/()*.conf",
+            "pattern": [],
+            "symbolic_name": "nginx_conf"
+        },
+        {
+            "file": "/opt/rh/nginx()*/root/etc/nginx/conf.d/()*",
+            "pattern": [],
+            "symbolic_name": "nginx_conf"
+        },
+        {
+            "file": "/opt/rh/nginx()*/root/etc/nginx/default.d/()*",
             "pattern": [],
             "symbolic_name": "nginx_conf"
         },
         {
             "file": "/var/log/nova/nova-api.log",
             "pattern": [
-                "Timed out waiting for a reply to message ID"
+                "DEBUG oslo.messaging._drivers.impl_rabbit",
+                "Timed out waiting for RPC response",
+                "Timed out waiting for a reply to message ID",
+                "Too many connections"
             ],
             "symbolic_name": "nova_api_log"
         },
         {
             "file": "/var/log/containers/nova/nova-api.log",
             "pattern": [
-                "Timed out waiting for a reply to message ID"
+                "DEBUG oslo.messaging._drivers.impl_rabbit",
+                "Timed out waiting for RPC response",
+                "Timed out waiting for a reply to message ID",
+                "Too many connections"
             ],
             "symbolic_name": "nova_api_log"
         },
@@ -1785,26 +2491,38 @@
                 "Attempting claim on node",
                 "Claim successful on node",
                 "Could not open ",
+                "DEBUG oslo.messaging._drivers.impl_rabbit",
+                "Detach volume",
+                "Disk of instance is too large",
                 "During sync_power_state the instance has a pending task",
                 "ERROR nova.virt.libvirt.driver",
                 "ERROR oslo_messaging.rpc.server Command: scp -r",
                 "ERROR oslo_messaging.rpc.server InvalidSharedStorage",
+                "ERROR oslo_messaging.rpc.server Stderr: u'Device crypt-dm-uuid-mpath",
+                "Find Multipath device file for volume WWN",
                 "FlavorDiskSmallerThanImage: Flavor's disk is too small for requested image.",
+                "INFO nova.compute.manager",
+                "INFO os_brick.initiator.linuxscsi",
                 "Instance shutdown by itself. Calling the stop API.",
                 "Live Migration failure: internal error: process exited while connecting to monitor",
                 "Live Migration failure: operation failed: Failed to connect to remote libvirt URI qemu+ssh",
+                "Migration pre-check error: Unable to migrate",
                 "No such device or address",
                 "Resuming guest",
                 "Stderr: u'blockdev: cannot open",
                 "Successfully plugged vif VIFBridge",
+                "Timed out waiting for RPC response",
                 "cmt=off: Property '.cmt' not found",
                 "does not match source",
                 "error: Failed to start domain",
+                "from mountpoint /dev",
+                "is not active",
                 "is not on shared storage",
                 "libvirt-guests.sh",
                 "libvirtError: Requested operation is not valid: domain has assigned non-USB host devices",
                 "libvirtError: Unable to delete file /var/lib/nova/instances/",
                 "unsupported configuration: Target device drive address",
+                "unsupported configuration: Target network card MTU",
                 "unsupported configuration: Unable to find security driver for model selinux"
             ],
             "symbolic_name": "nova_compute_log"
@@ -1817,26 +2535,38 @@
                 "Attempting claim on node",
                 "Claim successful on node",
                 "Could not open ",
+                "DEBUG oslo.messaging._drivers.impl_rabbit",
+                "Detach volume",
+                "Disk of instance is too large",
                 "During sync_power_state the instance has a pending task",
                 "ERROR nova.virt.libvirt.driver",
                 "ERROR oslo_messaging.rpc.server Command: scp -r",
                 "ERROR oslo_messaging.rpc.server InvalidSharedStorage",
+                "ERROR oslo_messaging.rpc.server Stderr: u'Device crypt-dm-uuid-mpath",
+                "Find Multipath device file for volume WWN",
                 "FlavorDiskSmallerThanImage: Flavor's disk is too small for requested image.",
+                "INFO nova.compute.manager",
+                "INFO os_brick.initiator.linuxscsi",
                 "Instance shutdown by itself. Calling the stop API.",
                 "Live Migration failure: internal error: process exited while connecting to monitor",
                 "Live Migration failure: operation failed: Failed to connect to remote libvirt URI qemu+ssh",
+                "Migration pre-check error: Unable to migrate",
                 "No such device or address",
                 "Resuming guest",
                 "Stderr: u'blockdev: cannot open",
                 "Successfully plugged vif VIFBridge",
+                "Timed out waiting for RPC response",
                 "cmt=off: Property '.cmt' not found",
                 "does not match source",
                 "error: Failed to start domain",
+                "from mountpoint /dev",
+                "is not active",
                 "is not on shared storage",
                 "libvirt-guests.sh",
                 "libvirtError: Requested operation is not valid: domain has assigned non-USB host devices",
                 "libvirtError: Unable to delete file /var/lib/nova/instances/",
                 "unsupported configuration: Target device drive address",
+                "unsupported configuration: Target network card MTU",
                 "unsupported configuration: Unable to find security driver for model selinux"
             ],
             "symbolic_name": "nova_compute_log"
@@ -1852,6 +2582,11 @@
             "symbolic_name": "nova_conf"
         },
         {
+            "file": "/var/lib/config-data/puppet-generated/nova_libvirt/etc/nova/nova.conf",
+            "pattern": [],
+            "symbolic_name": "nova_conf"
+        },
+        {
             "file": "/etc/nscd.conf",
             "pattern": [
                 "enable-cache"
@@ -1863,7 +2598,10 @@
             "pattern": [
                 "HOSTS:",
                 "Hosts:",
-                "hosts:"
+                "group",
+                "hosts:",
+                "passwd",
+                "shadow"
             ],
             "symbolic_name": "nsswitch_conf"
         },
@@ -1871,6 +2609,172 @@
             "file": "/etc/ntp.conf",
             "pattern": [],
             "symbolic_name": "ntp_conf"
+        },
+        {
+            "file": "/sys/module/nvme_core/parameters/io_timeout",
+            "pattern": [],
+            "symbolic_name": "nvme_core_io_timeout"
+        },
+        {
+            "file": "/var/lib/config-data/puppet-generated/octavia/etc/octavia/octavia.conf",
+            "pattern": [
+                "[",
+                "active_connection_max_retries",
+                "active_connection_rety_interval",
+                "admin_log_targets",
+                "administrative_log_facility",
+                "agent_request_read_timeout",
+                "agent_server_ca",
+                "agent_server_cert",
+                "agent_server_network_dir",
+                "agent_server_network_file",
+                "agent_tls_protocol",
+                "allow_pagination",
+                "allow_ping_health_monitors",
+                "allow_sorting",
+                "allow_tls_terminated_listeners",
+                "allow_vip_network_id",
+                "allow_vip_port_id",
+                "allow_vip_subnet_id",
+                "amp_active_retries",
+                "amp_active_wait_sec",
+                "amp_boot_network_list",
+                "amp_flavor_id",
+                "amp_image_id",
+                "amp_image_owner_id",
+                "amp_image_tag",
+                "amp_secgroup_list",
+                "amp_ssh_access_allowed",
+                "amphora_driver",
+                "amphora_expiry_age",
+                "amphora_udp_driver",
+                "anti_affinity_policy",
+                "api_base_uri",
+                "audit_map_file",
+                "auth_strategy",
+                "auth_type",
+                "availability_zone",
+                "base_cert_dir",
+                "base_path",
+                "bind_host",
+                "bind_ip",
+                "bind_port",
+                "build_active_retries",
+                "build_rate_limit",
+                "build_retry_interval",
+                "ca_certificates_file",
+                "cafile",
+                "cert_generator",
+                "cert_manager",
+                "cert_validity_time",
+                "cleanup_interval",
+                "client_ca",
+                "client_cert",
+                "compute_driver",
+                "connection_logging",
+                "connection_max_retries",
+                "connection_retry_interval",
+                "controller_ip_port_list",
+                "debug",
+                "default_health_monitor_quota",
+                "default_listener_quota",
+                "default_load_balancer_quota",
+                "default_member_quota",
+                "default_pool_quota",
+                "default_provider_driver",
+                "disable_local_log_storage",
+                "disable_revert",
+                "distributor_driver",
+                "driver",
+                "enable_anti_affinity",
+                "enable_proxy_headers_parsing",
+                "enabled",
+                "enabled_provider_agents",
+                "enabled_provider_drivers",
+                "endpoint_type",
+                "engine",
+                "failover_threads",
+                "forward_all_logs",
+                "get_socket_path",
+                "graceful_shutdown_timeout",
+                "haproxy_cmd",
+                "haproxy_stick_size",
+                "haproxy_template",
+                "health_check_interval",
+                "health_update_driver",
+                "health_update_threads",
+                "heartbeat_interval",
+                "heartbeat_timeout",
+                "ignore_req_list",
+                "insecure",
+                "lb_network_interface",
+                "load_balancer_expiry_age",
+                "loadbalancer_topology",
+                "log_dir",
+                "log_file",
+                "log_protocol",
+                "log_queue_size",
+                "log_retry_count",
+                "log_retry_interval",
+                "logging_template_override",
+                "max_process_warning_percent",
+                "max_retries",
+                "max_workers",
+                "memcached_servers",
+                "network_driver",
+                "octavia_plugins",
+                "pagination_max_limit",
+                "policy_file",
+                "port_detach_timeout",
+                "provider_agent_shutdown_timeout",
+                "random_amphora_name_length",
+                "region_name",
+                "respawn_count",
+                "respawn_interval",
+                "rest_request_conn_timeout",
+                "rest_request_read_timeout",
+                "retry_interval",
+                "rpc_thread_pool_size",
+                "server_ca",
+                "service_name",
+                "signing_digest",
+                "sock_rlimit",
+                "spare_amphora_pool_size",
+                "spare_check_interval",
+                "stats_max_processes",
+                "stats_request_timeout",
+                "stats_socket_path",
+                "stats_update_driver",
+                "stats_update_threads",
+                "status_max_processes",
+                "status_request_timeout",
+                "status_socket_path",
+                "status_update_threads",
+                "storage_path",
+                "tenant_log_targets",
+                "topic",
+                "topics",
+                "udp_connect_min_interval_health_monitor",
+                "use_oslo_messaging",
+                "use_upstart",
+                "user_data_config_drive",
+                "user_log_facility",
+                "user_log_format",
+                "volume_create_max_retries",
+                "volume_create_retry_interval",
+                "volume_create_timeout",
+                "volume_driver",
+                "volume_size",
+                "volume_type",
+                "vrrp_advert_int",
+                "vrrp_check_interval",
+                "vrrp_fail_count",
+                "vrrp_garp_refresh_count",
+                "vrrp_garp_refresh_interval",
+                "vrrp_success_count",
+                "workers"
+            ],
+            "symbolic_name": "octavia_conf"
         },
         {
             "file": "/etc/odbc.ini",
@@ -1911,6 +2815,18 @@
             "symbolic_name": "pacemaker_log"
         },
         {
+            "file": "/var/log/pacemaker/pacemaker.log",
+            "pattern": [
+                "pcmk_dbus_find_error"
+            ],
+            "symbolic_name": "pacemaker_log"
+        },
+        {
+            "file": "/proc/partitions",
+            "pattern": [],
+            "symbolic_name": "partitions"
+        },
+        {
             "file": "/etc/pam.d/password-auth",
             "pattern": [],
             "symbolic_name": "password_auth"
@@ -1935,7 +2851,6 @@
         {
             "file": "/var/lib/pgsql/data/pg_log/()*postgresql-.+\\.log",
             "pattern": [
-                "ERROR:",
                 "FATAL",
                 "checkpoints are occurring too frequently",
                 "connection limit exceeded for non-superusers",
@@ -1944,6 +2859,11 @@
                 "remaining connection slots are reserved for non-replication superuser connections"
             ],
             "symbolic_name": "postgresql_log"
+        },
+        {
+            "file": "/proc/net/netstat",
+            "pattern": [],
+            "symbolic_name": "proc_netstat"
         },
         {
             "file": "/proc/net/snmp",
@@ -1956,6 +2876,11 @@
             "symbolic_name": "proc_snmp_ipv6"
         },
         {
+            "file": "/proc/slabinfo",
+            "pattern": [],
+            "symbolic_name": "proc_slabinfo"
+        },
+        {
             "file": "/proc/stat",
             "pattern": [],
             "symbolic_name": "proc_stat"
@@ -1964,6 +2889,11 @@
             "file": "/sos_commands/process/ps_auxwww",
             "pattern": [],
             "symbolic_name": "ps_auxwww"
+        },
+        {
+            "file": "/etc/default/pulp_workers",
+            "pattern": [],
+            "symbolic_name": "pulp_worker_defaults"
         },
         {
             "file": "/etc/libvirt/qemu.conf",
@@ -1993,9 +2923,19 @@
             "symbolic_name": "rc_local"
         },
         {
+            "file": "/etc/rdma/rdma.conf",
+            "pattern": [],
+            "symbolic_name": "rdma_conf"
+        },
+        {
             "file": "/etc/redhat-release",
             "pattern": [],
             "symbolic_name": "redhat_release"
+        },
+        {
+            "file": "/etc/os-release",
+            "pattern": [],
+            "symbolic_name": "os_release"
         },
         {
             "file": "/etc/resolv.conf",
@@ -2039,9 +2979,19 @@
             "symbolic_name": "rhn_taskomatic_daemon_log"
         },
         {
+            "file": "/etc/rhosp-release",
+            "pattern": [],
+            "symbolic_name": "rhosp_release"
+        },
+        {
             "file": "/etc/rhsm/rhsm.conf",
             "pattern": [],
             "symbolic_name": "rhsm_conf"
+        },
+        {
+            "file": "/var/lib/rhsm/cache/releasever.json",
+            "pattern": [],
+            "symbolic_name": "rhsm_releasever"
         },
         {
             "file": "/etc/qpid/qpidd.conf",
@@ -2065,6 +3015,7 @@
         {
             "file": "/etc/rsyslog.conf",
             "pattern": [
+                "$ActionQueueFileName",
                 "imjournal",
                 "imtcp",
                 "regex"
@@ -2082,6 +3033,8 @@
                 "Max Smbd Processes",
                 "NT PIPE SUPPORT",
                 "Nt Pipe Support",
+                "PASSDB BACKEND",
+                "Passdb Backend",
                 "REALM",
                 "Realm",
                 "SECURITY",
@@ -2092,6 +3045,7 @@
                 "kerberos method",
                 "max smbd processes",
                 "nt pipe support",
+                "passdb backend",
                 "path",
                 "read only",
                 "realm",
@@ -2099,6 +3053,16 @@
                 "writable"
             ],
             "symbolic_name": "samba"
+        },
+        {
+            "file": "/etc/redhat-access/redhat-access-insights.properties",
+            "pattern": [],
+            "symbolic_name": "sat5_insights_properties"
+        },
+        {
+            "file": "/etc/foreman-installer/custom-hiera.yaml",
+            "pattern": [],
+            "symbolic_name": "satellite_custom_hiera"
         },
         {
             "file": "/usr/share/foreman/lib/satellite/version.rb",
@@ -2111,14 +3075,24 @@
             "symbolic_name": "scsi"
         },
         {
+            "file": "/proc/net/sctp/assocs",
+            "pattern": [],
+            "symbolic_name": "sctp_asc"
+        },
+        {
             "file": "/proc/net/sctp/eps",
             "pattern": [],
             "symbolic_name": "sctp_eps"
         },
         {
+            "file": "/proc/net/sctp/snmp",
+            "pattern": [],
+            "symbolic_name": "sctp_snmp"
+        },
+        {
             "file": "/var/log/secure",
             "pattern": [
-                "error: session_pty_req: session"
+                "[CAUTION] This_is_the default_filter_string_for_all_large_files!"
             ],
             "symbolic_name": "secure"
         },
@@ -2137,9 +3111,23 @@
             "symbolic_name": "foreman_tasks_config"
         },
         {
+            "file": "/etc/sysconfig/dynflowd",
+            "pattern": [
+                "EXECUTOR_MEMORY_LIMIT",
+                "EXECUTOR_MEMORY_MONITOR_DELAY",
+                "EXECUTOR_MEMORY_MONITOR_INTERVAL"
+            ],
+            "symbolic_name": "foreman_tasks_config"
+        },
+        {
             "file": "/proc/net/softnet_stat",
             "pattern": [],
             "symbolic_name": "softnet_stat"
+        },
+        {
+            "file": "/proc/net/sockstat",
+            "pattern": [],
+            "symbolic_name": "sockstat"
         },
         {
             "file": "/etc/ssh/sshd_config",
@@ -2185,6 +3173,7 @@
                 "PermitRootLogin",
                 "Permitemptypasswords",
                 "Permitrootlogin",
+                "Port",
                 "Protocol",
                 "USEPAM",
                 "UsePAM",
@@ -2219,10 +3208,32 @@
         {
             "file": "/usr/share/foreman/.ssh/ssh_config",
             "pattern": [
+                "[CAUTION] This_is_the default_filter_string_for_all_large_files!"
+            ],
+            "symbolic_name": "ssh_foreman_config"
+        },
+        {
+            "file": "/usr/share/foreman-proxy/.ssh/ssh_config",
+            "pattern": [
                 "Host",
                 "ProxyCommand"
             ],
-            "symbolic_name": "ssh_foreman_config"
+            "symbolic_name": "ssh_foreman_proxy_config"
+        },
+        {
+            "file": "/etc/sssd/sssd.conf",
+            "pattern": [],
+            "symbolic_name": "sssd_config"
+        },
+        {
+            "file": "/etc/swift/swift.conf",
+            "pattern": [],
+            "symbolic_name": "swift_conf"
+        },
+        {
+            "file": "/var/lib/config-data/puppet-generated/swift/etc/swift/swift.conf",
+            "pattern": [],
+            "symbolic_name": "swift_conf"
         },
         {
             "file": "/etc/swift/object-expirer.conf",
@@ -2243,6 +3254,11 @@
             "file": "/var/lib/config-data/puppet-generated/swift/etc/swift/proxy-server.conf",
             "pattern": [],
             "symbolic_name": "swift_proxy_server_conf"
+        },
+        {
+            "file": "/sys/kernel/debug/sched_features",
+            "pattern": [],
+            "symbolic_name": "sys_kernel_sched_features"
         },
         {
             "file": "/etc/sysconfig/kdump",
@@ -2275,6 +3291,11 @@
             "symbolic_name": "sysconfig_ntpd"
         },
         {
+            "file": "/etc/sysconfig/network",
+            "pattern": [],
+            "symbolic_name": "sysconfig_network"
+        },
+        {
             "file": "/etc/opt/rh/rh-mongodb26/sysconfig/()*mongod",
             "pattern": [],
             "symbolic_name": "sysconfig_rh_mongodb26"
@@ -2283,6 +3304,11 @@
             "file": "/etc/sysconfig/prelink",
             "pattern": [],
             "symbolic_name": "sysconfig_prelink"
+        },
+        {
+            "file": "/etc/sysconfig/sshd",
+            "pattern": [],
+            "symbolic_name": "sysconfig_sshd"
         },
         {
             "file": "/etc/sysconfig/virt-who",
@@ -2300,14 +3326,9 @@
             "symbolic_name": "systemd_logind_conf"
         },
         {
-            "file": "/usr/lib/systemd/system/docker.service",
+            "file": "/etc/systemd/system.conf.d/origin-accounting.conf",
             "pattern": [],
-            "symbolic_name": "systemd_docker"
-        },
-        {
-            "file": "/usr/lib/systemd/system/atomic-openshift-node.service",
-            "pattern": [],
-            "symbolic_name": "systemd_openshift_node"
+            "symbolic_name": "systemd_system_origin_accounting"
         },
         {
             "file": "/etc/systemd/system.conf",
@@ -2357,7 +3378,7 @@
         {
             "file": "/var/log/up2date",
             "pattern": [
-                "Temporary failure in name resolution"
+                "The certificate /usr/share/rhn/RHNS-CA-CERT is expired"
             ],
             "symbolic_name": "up2date_log"
         },
@@ -2375,9 +3396,11 @@
             "file": "/var/log/vdsm/vdsm.log",
             "pattern": [
                 "(mailbox-spm) [storage.Misc.excCmd] /usr/bin/taskset --cpu-list",
+                "Bad volume specification",
                 "Changed state to Down: 'NoneType' object has no attribute 'attrib'",
                 "Changed state to Down: internal error: Attempted double use of PCI slot",
                 "ERROR (mailbox-spm) [storage.MailBox.SpmMailMonitor]",
+                "INFO",
                 "RPC call Host.setupNetworks failed",
                 "Stopping connection",
                 "The name org.fedoraproject.FirewallD1 was not provided by any .service files",
@@ -2385,7 +3408,8 @@
                 "_report_inconsistency",
                 "lastCheck",
                 "libvirtError: internal error: failed to format device alias",
-                "looking for unfetched domain"
+                "looking for unfetched domain",
+                "storage.TaskManager.Task"
             ],
             "symbolic_name": "vdsm_log"
         },
@@ -2437,6 +3461,11 @@
                 "max_size"
             ],
             "symbolic_name": "virtlogd_conf"
+        },
+        {
+            "file": "/sys/kernel/mm/swap/vma_ra_enabled",
+            "pattern": [],
+            "symbolic_name": "vma_ra_enabled"
         },
         {
             "file": "/etc/pam.d/vsftpd",
@@ -2531,6 +3560,7 @@
             "file": "/var/lib/config-data/puppet-generated/gnocchi/etc/gnocchi/gnocchi.conf",
             "pattern": [
                 "[",
+                "ceph",
                 "ceph_pool",
                 "driver",
                 "storage"
@@ -2541,6 +3571,7 @@
             "file": "/etc/gnocchi/gnocchi.conf",
             "pattern": [
                 "[",
+                "ceph",
                 "ceph_pool",
                 "driver",
                 "storage"
@@ -2551,6 +3582,7 @@
             "file": "/etc/neutron/neutron.conf",
             "pattern": [
                 "[",
+                "debug",
                 "dhcp_agents_per_network"
             ],
             "symbolic_name": "neutron_conf"
@@ -2559,9 +3591,26 @@
             "file": "/var/lib/config-data/puppet-generated/neutron/etc/neutron/neutron.conf",
             "pattern": [
                 "[",
+                "debug",
                 "dhcp_agents_per_network"
             ],
             "symbolic_name": "neutron_conf"
+        },
+        {
+            "file": "/etc/neutron/dhcp_agent.ini",
+            "pattern": [
+                "[",
+                "force_metadata"
+            ],
+            "symbolic_name": "neutron_dhcp_agent_ini"
+        },
+        {
+            "file": "/var/lib/config-data/puppet-generated/neutron/etc/neutron/dhcp_agent.ini",
+            "pattern": [
+                "[",
+                "force_metadata"
+            ],
+            "symbolic_name": "neutron_dhcp_agent_ini"
         },
         {
             "file": "/etc/neutron/plugin.ini",
@@ -2604,9 +3653,11 @@
         {
             "file": "/var/log/neutron/l3-agent.log",
             "pattern": [
+                "DEBUG oslo.messaging._drivers.impl_rabbit",
                 "Duplicate iptables rule detected",
                 "Error while deleting router",
-                "Stderr: Another app is currently holding the xtables lock"
+                "Stderr: Another app is currently holding the xtables lock",
+                "Timed out waiting for RPC response"
             ],
             "symbolic_name": "neutron_l3_agent_log"
         },
@@ -2641,9 +3692,25 @@
             "symbolic_name": "neutron_metadata_agent_log"
         },
         {
+            "file": "/etc/neutron/plugins/ml2/ml2_conf.ini",
+            "pattern": [
+                "["
+            ],
+            "symbolic_name": "neutron_ml2_conf"
+        },
+        {
+            "file": "/var/lib/config-data/puppet-generated/neutron/etc/neutron/plugins/ml2/ml2_conf.ini",
+            "pattern": [
+                "["
+            ],
+            "symbolic_name": "neutron_ml2_conf"
+        },
+        {
             "file": "/var/log/neutron/openvswitch-agent.log",
             "pattern": [
                 "Agent main thread died of an exception",
+                "DEBUG oslo.messaging._drivers.impl_rabbit",
+                "Timed out waiting for RPC response",
                 "neutron.plugins.ml2.drivers.openvswitch.agent.openflow.native.ovs_ryuapp",
                 "u'device_owner': u'network:router_interface_distributed'"
             ],
@@ -2653,21 +3720,42 @@
             "file": "/var/log/containers/neutron/openvswitch-agent.log",
             "pattern": [
                 "Agent main thread died of an exception",
+                "DEBUG oslo.messaging._drivers.impl_rabbit",
+                "Timed out waiting for RPC response",
                 "neutron.plugins.ml2.drivers.openvswitch.agent.openflow.native.ovs_ryuapp",
                 "u'device_owner': u'network:router_interface_distributed'"
             ],
             "symbolic_name": "neutron_ovs_agent_log"
         },
         {
+            "file": "/usr/libexec/setup-named-chroot.sh",
+            "pattern": [
+                "/",
+                "ROOTDIR_MOUNT"
+            ],
+            "symbolic_name": "setup_named_chroot"
+        },
+        {
             "file": "/usr/sap/hostctrl/exe/host_profile",
             "pattern": [
                 "DIR_",
-                "IP_LOCAL_PORT_RANGE",
-                "SAPSYSTEM",
-                "reserved_port/enable",
-                "reserved_port/range"
+                "SAPSYSTEM"
             ],
             "symbolic_name": "sap_host_profile"
+        },
+        {
+            "file": "/proc/sys/kernel/sched_rt_runtime_us",
+            "pattern": [],
+            "symbolic_name": "sched_rt_runtime_us"
+        },
+        {
+            "file": "/usr/lib/udev/rules.d/59-fc-wwpn-id.rules",
+            "pattern": [
+                "ENV{FC_INITIATOR_WWPN}",
+                "ENV{FC_TARGET_LUN}",
+                "ENV{FC_TARGET_WWPN}"
+            ],
+            "symbolic_name": "udev_fc_wwpn_id_rules"
         }
     ],
     "globs": [
@@ -2692,8 +3780,43 @@
             "pattern": []
         },
         {
+            "glob": "/etc/httpd/conf.d/*/*.conf",
+            "pattern": [],
+            "symbolic_name": "httpd_conf"
+        },
+        {
+            "glob": "/etc/httpd/conf*/*.conf",
+            "pattern": [],
+            "symbolic_name": "httpd_conf"
+        },
+        {
+            "glob": "/opt/rh/httpd24/root/etc/httpd/conf.d/*/*.conf",
+            "pattern": [],
+            "symbolic_name": "httpd_conf_scl_httpd24"
+        },
+        {
+            "glob": "/opt/rh/httpd24/root/etc/httpd/conf*/*.conf",
+            "pattern": [],
+            "symbolic_name": "httpd_conf_scl_httpd24"
+        },
+        {
+            "glob": "/opt/rh/jbcs-httpd24/root/etc/httpd/conf.d/*/*.conf",
+            "pattern": [],
+            "symbolic_name": "httpd_conf_scl_jbcs_httpd24"
+        },
+        {
+            "glob": "/opt/rh/jbcs-httpd24/root/etc/httpd/conf*/*.conf",
+            "pattern": [],
+            "symbolic_name": "httpd_conf_scl_jbcs_httpd24"
+        },
+        {
             "glob": "/sys/class/net/bond[0-9]*/bonding/tlb_dynamic_lb",
             "symbolic_name": "bond_dynamic_lb",
+            "pattern": []
+        },
+        {
+            "glob": "/boot/loader/entries/*.conf",
+            "symbolic_name": "boot_loader_entries",
             "pattern": []
         },
         {
@@ -2702,9 +3825,28 @@
             "pattern": []
         },
         {
+            "glob": "/etc/krb5.conf.d/*",
+            "symbolic_name": "krb5_conf_d",
+            "pattern": []
+        },
+        {
             "glob": "/sys/fs/cgroup/cpu/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod[a-f0-9_]*.slice/cpu.cfs_quota_us",
             "symbolic_name": "kubepods_cpu_quota",
             "pattern": []
+        },
+        {
+            "glob": "/sys/bus/pci/devices/*/mlx4_port[0-9]",
+            "symbolic_name": "mlx4_port",
+            "pattern": []
+        },
+        {
+            "glob": "/var/opt/rh/rh-mysql*/log/mysql/mysqld.log",
+            "symbolic_name": "mysql_log",
+            "pattern": [
+                "OpenSSL internal error, assertion failed: Digest MD5 forbidden in FIPS mode!",
+                "Too many open files",
+                "[ERROR]"
+            ]
         },
         {
             "glob": "/sys/devices/system/node/node[0-9]*/cpulist",
@@ -2981,8 +4123,8 @@
         "ceph_health_detail": {
             "host": [
                 {
-                    "archive_file_name": "/insights_commands/ceph_health_detail_-f_json-pretty",
-                    "command": "/usr/bin/ceph health detail -f json-pretty",
+                    "archive_file_name": "/insights_commands/ceph_health_detail_-f_json",
+                    "command": "/usr/bin/ceph health detail -f json",
                     "pattern": []
                 }
             ]
@@ -3019,8 +4161,8 @@
         "ceph_osd_dump": {
             "host": [
                 {
-                    "archive_file_name": "/insights_commands/ceph_osd_dump_-f_json-pretty",
-                    "command": "/usr/bin/ceph osd dump -f json-pretty",
+                    "archive_file_name": "/insights_commands/ceph_osd_dump_-f_json",
+                    "command": "/usr/bin/ceph osd dump -f json",
                     "pattern": []
                 }
             ]
@@ -3028,8 +4170,8 @@
         "ceph_osd_tree": {
             "host": [
                 {
-                    "archive_file_name": "/insights_commands/ceph_osd_tree_-f_json-pretty",
-                    "command": "/usr/bin/ceph osd tree -f json-pretty",
+                    "archive_file_name": "/insights_commands/ceph_osd_tree_-f_json",
+                    "command": "/usr/bin/ceph osd tree -f json",
                     "pattern": []
                 }
             ]
@@ -3037,8 +4179,8 @@
         "ceph_s": {
             "host": [
                 {
-                    "archive_file_name": "/insights_commands/ceph_-s_-f_json-pretty",
-                    "command": "/usr/bin/ceph -s -f json-pretty",
+                    "archive_file_name": "/insights_commands/ceph_-s_-f_json",
+                    "command": "/usr/bin/ceph -s -f json",
                     "pattern": []
                 }
             ]
@@ -4754,29 +5896,6 @@
                 {
                     "archive_file_name": "/insights_commands/ls_-lanR_.dev.disk",
                     "command": "/bin/ls -lanR /dev/disk",
-                    "pattern": []
-                }
-            ]
-        },
-        "ls_docker_volumes": {
-            "docker_container": [
-                {
-                    "archive_file_name": "/insights_data/container/commands/ls_-lanR_.var.lib.docker.volumes",
-                    "command": "/bin/ls -lanR {CONTAINER_MOUNT_POINT}/var/lib/docker/volumes",
-                    "pattern": []
-                }
-            ],
-            "docker_image": [
-                {
-                    "archive_file_name": "/insights_data/image/commands/ls_-lanR_.var.lib.docker.volumes",
-                    "command": "/bin/ls -lanR {CONTAINER_MOUNT_POINT}/var/lib/docker/volumes",
-                    "pattern": []
-                }
-            ],
-            "host": [
-                {
-                    "archive_file_name": "/insights_commands/ls_-lanR_.var.lib.docker.volumes",
-                    "command": "/bin/ls -lanR /var/lib/docker/volumes",
                     "pattern": []
                 }
             ]
@@ -6916,6 +8035,15 @@
                 {
                     "archive_file_name": "/etc/selinux/config",
                     "file": "/etc/selinux/config",
+                    "pattern": []
+                }
+            ]
+        },
+        "sealert": {
+            "host": [
+                {
+                    "archive_file_name": "/insights_commands/sealert_-l",
+                    "command": "/usr/bin/sealert -l \"*\"",
                     "pattern": []
                 }
             ]

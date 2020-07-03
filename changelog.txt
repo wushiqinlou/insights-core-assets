@@ -1,5 +1,161 @@
 Insights Client Core Changelog
 
+v 3.0.172 - Jul 01 2020
+- New filters added to filters.yaml
+
+v 3.0.171 - Jun 25 2020
+- Fix bug in unregister with --force [RHCLOUD-2638]
+- Ignore failure to write .registered file when non-root [RHCLOUD-6547]
+
+v 3.0.169 - Jun 18 2020
+- New Filters added to filters.yaml
+- Create thread for sdnotify [RHCLOUD-5841]
+
+v 3.0.168 - Jun 10 2020
+- Fix loading policy metadata parsing error (BZ1841409) [RHCOMPL-728]
+
+v 3.0.167 - Jun 04 2020
+- New filters added to filters.yaml
+
+v 3.0.166 - May 28 2020
+- New filters added to filters.yaml
+
+v 3.0.165 - May 21 2020
+- New filters added to filters.yaml
+
+v 3.0.164 - May 14 2020
+- fix machine-id validation [RHCLOUD-6009]
+- fix issue with compliance hostnames on RHEL6 [RHICOMPL-692]
+- fix issue with compliance subprocess calls [RHICOMPL-670]
+- remove KBACCESS code paths [RHCLOUD-4898]
+- add more exception handling for egg fetch [RHCLOUD-2139]
+
+v 3.0.163 - May 7 2020
+- Always create archive_tmp_dir for compatibility (BZ1831496) [RHCLOUD-6373]
+
+v 3.0.162 - Apr 30 2020
+- Show tested URLs when failing --test-connection [RHCLOUD-6035]
+
+v3.0.161 - Apr 24 2020
+- Validate tags [RHCLOUD-5302]
+- Automatically migrate existing tags.conf files to tags.yaml [RHCLOUD-6008]
+
+v3.0.160 - Apr 16 2020
+- Direct to console after registration (BZ1715980) [RHCLOUD-4094]
+
+v3.0.159 - Apr 9 2020
+- Change default tags file to tags.yaml (BZ1814135) [RHCLOUD-5374]
+- Fix RPM version logging [RHCLOUD-5404]
+- Enhance remove.conf with new redaction config files [RHCLOUD-4786]
+- Add components to blacklist config [RHCLOUD-4982]
+- Add blacklist config report to archive [RHCLOUD-122]
+- Allow use of --group on platform [RHCLOUD-5663]
+
+v3.0.158 - Apr 2 2020
+- systemd use --now to only run systemctl once [RHCLOUD-5320]
+
+v3.0.157 - Mar 26 2020
+- Remove duplicate logging requests when a payload fails (BZ1708686) [RHCLOUD-2198]
+- Download tailoring file for tailored policies [RHICOMPL-517]
+
+v3.0.156 - Mar 19 2020
+- Log network request information to network log level (BZ1708685) [RHCLOUD-2198]
+- Warn when remove.conf has invalid permissions (BZ1553798) [RHCLOUD-2649]
+- Add --output-dir and --output-file options to copy collected data to a specified path (BZ1538226) [RHCLOUD-3754]
+- Add --check-results and --show-results options for Cockpit integration [RHCLOUD-3537]
+- Handle 413/415 errors from API (BZ1629874) [RHCLOUD-1983]
+- Don't retry upload on API errors [RHCLOUD-2199, RHCLOUD-4776]
+- Improve compliance error handling [RHICOMPL-480]
+- {Beta} Add YAML parsing for remove.conf (BZ1607458) [RHCLOUD-161]
+- Don't create unused temp dir when obfuscation enabled (BZ1774106) [RHCLOUD-4065]
+- Allow JSON files in soscleaner obfuscation
+
+v3.0.150 - Feb 7 2020
+- Fix for AWS certificate pinning (BZ1798557)
+- Fix for compliance report gathering
+- Improve temporary file cleanup
+
+v3.0.147 - Feb 4 2020
+- Add --portal-access option for entitling AWS hosts
+- Include branch_info in payload metadata
+- Unicode fix in soscleaner (BZ1794848)
+- Keep separate log files for --payload uploads (BZ1734283)
+- Additional validation for machine-id
+- Collect multiple compliance reports
+
+v3.0.139 - Dec 18 2019
+- Autoconfig fix for platform URLs (BZ1708683)
+
+v3.0.137 - Dec 6 2019
+- Use pidfile and systemd-notify to extend job timer
+- Simplify egg version logging
+- Improve error handling
+- Remove deprecated option --to-stdout
+- Python 3 compatibility fix
+- Add more information to user agent
+- Compliance collection fixes
+- Fix autoconfig bug for platform URLs
+- Add autoconfig support for staging URLs
+- Send INFO logging to stdout instead of stderr (BZ1576348)
+
+v3.0.121 - Aug 26 2019
+- Fix Satellite 5 autoconfig bug
+
+v3.0.115 - Aug 1 2019
+- Fix version logging on RHEL8 (BZ1733221)
+- Tweak config option handling for --offline
+- Improve messaging
+- Compliance collection added
+
+v3.0.112 - Jul 17 2019
+- Relocate egg version logging
+
+v3.0.111 - Jul 17 2019
+- Revert cgroups check
+
+v3.0.110 - Jul 16 2019
+- Include core version in debug info and in archive
+- Check for cgroups on run start
+
+v3.0.102 - Jun 4 2019
+- Enable unregistration
+- Display-name tweaks
+
+v3.0.97 - May 6 2019
+- Fix branch info bug
+
+v3.0.96 - May 4 2019
+- Remove deprecated options: --analyze-container, --analyze-file, --analyze-image-id, --analyze-mountpoint, --to-json
+- Print hostname instead of machine-id on successful upload
+- Omit command from archive if command not found
+- Increase HTTP timeout to 120s
+- Isolate legacy code for migration
+- Remove deprecated certificate tests from --test-connection
+- Retool registration for platform
+- Add migration to cloud.redhat.com
+- Tweak option loading
+- Fix --compressor parsing error
+- Restrict branch_info HTTP calls to Satellite
+- Additional remove.conf logging
+- Upload to legacy mirror for platform/payload
+- Connect to both APIs when changing displayname
+
+v3.0.87 - Apr 1 2019
+- Fix insights-core var initialization
+- Fix upload traceback caused by above
+- Fix --status return code regression
+
+v3.0.83 - Mar 14 2019
+- Generate machine-id on startup
+
+v3.0.81 - Mar 8 2019
+- Fix abrt error when running core module (BZ1686439)
+- Fix subscription-manager command traceback
+
+v3.0.80 - Feb 28 2019
+- Warn if HTTP_PROXY is set
+- Fix pre-command exception (BZ1559076)
+
 v3.0.75 - Jan 30 2019
 - Improve remove.conf parsing
 - Remove deprecated options: --from-stdin, --from-file, --run-these
