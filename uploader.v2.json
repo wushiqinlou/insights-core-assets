@@ -588,6 +588,11 @@
             "symbolic_name": "mount"
         },
         {
+            "command": "/proc/mounts",
+            "pattern": [],
+            "symbolic_name": "mounts"
+        },
+        {
             "command": "/sbin/modinfo i40e",
             "pattern": [],
             "symbolic_name": "modinfo_i40e"
